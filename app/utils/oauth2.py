@@ -20,7 +20,7 @@ ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 REFRESH_EXPIRE_MIN = 60 * 24
 
-
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/signin")
 
 def create_access_token(data:dict):
     to_encode = data.copy()
@@ -28,7 +28,7 @@ def create_access_token(data:dict):
     expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
 
-    jwt_token = jwt.encode(to_encode, SECRET_KEY, algorithm= ALGORITHM)
+    jwt_token = jwt.encode(to_encode, SECRET_KEY, algorithm= [ALGORITHM])
     return jwt_token
 
 def verify_access_token(token: str, credentials_exception):
@@ -43,23 +43,45 @@ def verify_access_token(token: str, credentials_exception):
         raise credentials_exception
     return token_data
 
-#def get_current_user(token: str, credentials_exception, db: Session = Depends(get_db)):
-def get_current_user(token: str, credentials_exception):
+# def get_current_user(token: str, credentials_exception, db: Session = Depends(get_db)):
+# def get_current_user(token: str, credentials_exception):
 
-    credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="Could not validate credentials",
-                                          headers={"www-Authenticate": "Bearer"})
-    #token = verify_access_token(token, credentials_exception)
-    #user=db.query(User).filter(User.id == token.id).first()
-    return verify_access_token(token, credentials_exception)
+#     credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail="Could not validate credentials",
+#                                           headers={"www-Authenticate": "Bearer"})
+#     #token = verify_access_token(token, credentials_exception)
+#     #user=db.query(User).filter(User.id == token.id).first()
+#     return verify_access_token(token, credentials_exception)
+
+def get_current_user(
+    token: str = Depends(oauth2_scheme),
+    db: Session = Depends(get_db)
+) -> User:
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"}
+    )
+
+    token_data = verify_access_token(token, credentials_exception)
+    user = db.query(User).filter(User.id == token_data.id).first()
+
+    if not user:
+        raise credentials_exception
+
+    return user
 
 
+def get_admin_user(user: User = Depends(get_current_user)):
+    if user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admins only")
+    return user
 
 def create_refresh_token(data: dict):
     to_encode = data.copy()
     to_encode.update({"exp": datetime.utcnow() + timedelta(minutes=REFRESH_EXPIRE_MIN)})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/signin")
+
 
 def decode_token(
     token: str = Depends(oauth2_scheme),
