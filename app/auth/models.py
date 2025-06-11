@@ -17,6 +17,8 @@ class User(Base):
     role = Column(Enum(RoleEnum), default=RoleEnum.user)
 
     cart_items = relationship("CartItem", back_populates="user", cascade="all, delete")
+    orders = relationship("Order", back_populates="user", cascade="all, delete")
+
 
 class PasswordResetToken(Base):
     __tablename__ = "password_reset_tokens"
