@@ -1,10 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Union
 from app.core.database import get_db
 from app.utils.oauth2 import get_user_only
 from app.cart import schemas, models
 from app.products.models import Product
+from app.cart.schemas import MessageResponse
 from app.auth.models import User
 
 router = APIRouter(prefix="/cart", tags=["Cart"])
@@ -32,7 +33,7 @@ def add_to_cart(
     db.commit()
     return {"message": "Product added to cart."}
 
-@router.get("/", response_model=List[schemas.CartItemOut])
+@router.get("/", response_model=Union[List[schemas.CartItemOut], MessageResponse])
 def get_cart_items(
     db: Session = Depends(get_db),
     user: User = Depends(get_user_only)
@@ -40,7 +41,13 @@ def get_cart_items(
     """
     Get all items in the current user's cart.
     """
-    return db.query(models.CartItem).filter_by(user_id=user.id).all()
+    items= db.query(models.CartItem).filter_by(user_id=user.id).all()
+
+    if not items:
+        return {
+          "message": "No items in the cart."
+    }
+    return items
 
 @router.put("/{product_id}", status_code=status.HTTP_200_OK)
 def update_cart_item_quantity(

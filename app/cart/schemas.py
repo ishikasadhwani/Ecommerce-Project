@@ -16,3 +16,6 @@ class CartItemOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+class MessageResponse(BaseModel):
+    message: str
