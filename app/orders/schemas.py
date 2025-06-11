@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List
 from datetime import datetime
 from enum import Enum
+from app.products.schemas import ProductOutOrders
 
 # Enum for order status
 class OrderStatus(str, Enum):
@@ -13,7 +14,7 @@ class OrderItemOut(BaseModel):
     """
     Response schema for a single item in an order.
     """
-    product_id: int
+    product: ProductOutOrders
     quantity: int
     price_at_purchase: float
 
@@ -40,8 +41,5 @@ class OrderResponseWithMessage(BaseModel):
     class Config:
         orm_mode = True
 
-class OrderStatusUpdate(BaseModel):
-    """
-    Schema for updating an order's status.
-    """
-    status: OrderStatus
+class MessageResponse(BaseModel):
+    message: str

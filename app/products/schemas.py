@@ -25,12 +25,19 @@ class ProductUpdateResponse(BaseModel):
 class MessageResponse(BaseModel):
     message: str
 
-class PublicProductOut(BaseModel):
+class ProductOutOrders(BaseModel):
+    id: int
     name: str
     description: Optional[str]
-    price: float
-    category: str
     image_url: Optional[HttpUrl]
 
     class Config:
         orm_mode = True
+
+class PublicProductOut(ProductOutOrders):
+    price: float
+    category: str
+
+    class Config:
+        orm_mode = True
+

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+from sqlalchemy.orm import joinedload
 from typing import List
 from app.core.database import get_db
 from app.auth.models import User
@@ -70,3 +71,36 @@ def checkout(
         "order": order
     }
 
+@router.get("/orders", response_model=List[schemas.OrderOut])
+def get_user_orders(
+    db: Session = Depends(get_db),
+    user: User = Depends(get_user_only)
+):
+    """
+    Get a list of all orders placed by the current user.
+    If no orders found, return a friendly message.
+    """
+    orders = db.query(models.Order).filter_by(user_id=user.id).order_by(models.Order.created_at.desc()).all()
+
+    if not orders:
+        return {"message": "No previous orders."}
+    
+    return orders
+
+@router.get("/orders/{order_id}", response_model=schemas.OrderOut)
+def get_user_order_detail(
+    order_id: int,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_user_only)
+):
+    """
+    Get detailed information about a specific order by order ID.
+    Ensures the order belongs to the current user.
+    """
+    order = db.query(models.Order).options(
+        joinedload(models.Order.items).joinedload(models.OrderItem.product)
+    ).filter_by(id=order_id, user_id=user.id).first()
+    if not order:
+        raise HTTPException(status_code=404, detail="Order not found.")
+
+    return order
