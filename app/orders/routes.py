@@ -71,7 +71,7 @@ def checkout(
         "order": order
     }
 
-@router.get("/orders", response_model=List[schemas.OrderOut])
+@router.get("/orders", response_model=List[schemas.OrderOutHistory])
 def get_user_orders(
     db: Session = Depends(get_db),
     user: User = Depends(get_user_only)
@@ -86,6 +86,11 @@ def get_user_orders(
         return {"message": "No previous orders."}
     
     return orders
+
+def attach_subtotals(order):
+    for item in order.items:
+        item.subtotal = round(item.quantity * item.price_at_purchase, 2)
+    return order
 
 @router.get("/orders/{order_id}", response_model=schemas.OrderOut)
 def get_user_order_detail(
@@ -103,4 +108,4 @@ def get_user_order_detail(
     if not order:
         raise HTTPException(status_code=404, detail="Order not found.")
 
-    return order
+    return attach_subtotals(order)
