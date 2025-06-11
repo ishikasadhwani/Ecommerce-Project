@@ -76,6 +76,14 @@ def get_admin_user(user: User = Depends(get_current_user)):
         raise HTTPException(status_code=403, detail="Admins only")
     return user
 
+def get_user_only(user: User = Depends(get_current_user)) -> User:
+    if user.role != "user":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only users can access cart functionalities."
+        )
+    return user
+
 def create_refresh_token(data: dict):
     to_encode = data.copy()
     to_encode.update({"exp": datetime.utcnow() + timedelta(minutes=REFRESH_EXPIRE_MIN)})

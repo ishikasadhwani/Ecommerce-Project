@@ -26,7 +26,6 @@ class MessageResponse(BaseModel):
     message: str
 
 class PublicProductOut(BaseModel):
-    id: int
     name: str
     description: Optional[str]
     price: float
