@@ -6,12 +6,14 @@ from app.utils.oauth2 import get_admin_user
 from app.products import models, schemas
 from app.products.schemas import MessageResponse, ProductOut
 from fastapi import Query
+from app.core.config import logger
 
 router = APIRouter(prefix="/admin/products", tags=["Admin - Products"])
 public_router = APIRouter(prefix="/products", tags=["Public - Products"])
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 def create_product(data: schemas.ProductCreate, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+    logger.info(f"Product creation requested by admin_id={admin.id} for product '{data.name}'")
     product_data = data.dict()
     product_data["image_url"] = str(product_data["image_url"]) if product_data["image_url"] else None
     product_data["price"] = float(product_data["price"])  # Optional: if using Decimal
@@ -19,17 +21,21 @@ def create_product(data: schemas.ProductCreate, db: Session = Depends(get_db), a
     db.add(product)
     db.commit()
     db.refresh(product)
+    logger.info(f"Product created successfully: id={product.id}, name={product.name}")
     return {"message": "Product created successfully."}
 
 
 @router.get("/", response_model=List[schemas.ProductOut])
 def list_products(db: Session = Depends(get_db), admin=Depends(get_admin_user), skip: int = 0, limit: int = 10):
+    logger.info(f"Product list requested by admin_id={admin.id}")
     return db.query(models.Product).offset(skip).limit(limit).all()
 
 @router.get("/{product_id}", response_model=schemas.ProductOut)
 def get_product(product_id: int, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+    logger.info(f"Product detail requested by admin_id={admin.id} for product_id={product_id}")
     product = db.query(models.Product).get(product_id)
     if not product:
+        logger.warning(f"Product not found: product_id={product_id} requested by admin_id={admin.id}")
         raise HTTPException(status_code=404, detail="Product not found")
     return product
 
@@ -40,8 +46,10 @@ def update_product(
     db: Session = Depends(get_db),
     admin=Depends(get_admin_user)
 ):
+    logger.info(f"Product update requested by admin_id={admin.id} for product_id={product_id}")
     product = db.query(models.Product).get(product_id)
     if not product:
+        logger.warning(f"Product update failed: product_id={product_id} not found by admin_id={admin.id}")
         raise HTTPException(status_code=404, detail="Product not found")
 
     updates = data.dict(exclude_unset=True)
@@ -57,6 +65,7 @@ def update_product(
 
     db.commit()
     db.refresh(product)
+    logger.info(f"Product updated successfully: product_id={product_id} by admin_id={admin.id}")
     return {
         "message": "Product updated successfully.",
         "product": product
@@ -64,11 +73,14 @@ def update_product(
 
 @router.delete("/{product_id}")
 def delete_product(product_id: int, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+    logger.info(f"Product delete requested by admin_id={admin.id} for product_id={product_id}")
     product = db.query(models.Product).get(product_id)
     if not product:
+        logger.warning(f"Product delete failed: product_id={product_id} not found by admin_id={admin.id}")
         raise HTTPException(status_code=404, detail="Product not found")
     db.delete(product)
     db.commit()
+    logger.info(f"Product deleted successfully: product_id={product_id} by admin_id={admin.id}")
     return {"message": "Product deleted successfully"}
 
 
@@ -84,6 +96,7 @@ def public_product_list(
     page: int = 1,
     page_size: int = 10
 ):
+    logger.info(f"Public product list requested with filters: category={category}, min_price={min_price}, max_price={max_price}, sort_by={sort_by}, page={page}, page_size={page_size}")
     query = db.query(models.Product)
 
     if category:
@@ -104,26 +117,34 @@ def public_product_list(
     # Pagination
     products = query.offset((page - 1) * page_size).limit(page_size).all()
     if not products:
+       logger.info("No products found matching the public query criteria.")
        return {
           "message": "No products found matching your criteria."
     }
+    logger.info(f"Public product list returned {len(products)} products.")
     return products
 
 @public_router.get("/search", response_model=Union[List[ProductOut], MessageResponse])
 def search_products(keyword: str, db: Session = Depends(get_db)):
+    logger.info(f"Public product search requested for keyword='{keyword}'")
     products = db.query(models.Product).filter(
         models.Product.name.ilike(f"%{keyword}%") |
         models.Product.description.ilike(f"%{keyword}%")
     ).all()
 
     if not products:
+        logger.info(f"No products found for search keyword '{keyword}'.")
         return {"message": f"No products found for '{keyword}'."}
-
+    
+    logger.info(f"Search for '{keyword}' returned {len(products)} products.")
     return products
 
 @public_router.get("/{id}", response_model=schemas.PublicProductOut)
 def public_product_detail(id: int, db: Session = Depends(get_db)):
+    logger.info(f"Public product detail requested for product_id={id}")
     product = db.query(models.Product).get(id)
     if not product:
+        logger.warning(f"Public product detail failed: product_id={id} not found")
         raise HTTPException(status_code=404, detail="Product not found")
+    logger.info(f"Public product detail returned for product_id={id}")
     return product

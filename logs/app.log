@@ -1,0 +1,18 @@
+2025-06-11 23:10:53,508 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-11 23:10:53,557 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\EcommerceProject\Ecommerce-Project\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-11 23:10:54,514 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-11 23:18:08,251 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-11 23:18:08,757 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-11 23:48:02,751 - INFO - Password reset attempt with token: 47e4e09c-6205-4f38-a369-288408ea9ae3
+2025-06-11 23:48:03,669 - INFO - Password reset successful for user_id=1, email=ishikasadhwani3@gmail.com
+2025-06-12 00:20:12,988 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-12 00:20:18,487 - INFO - Password reset token created for user_id=1, email=ishikasadhwani3@gmail.com
+2025-06-12 00:20:39,096 - INFO - Password reset attempt with token: def93048-039e-412d-9ac5-256d6677d79a
+2025-06-12 00:20:40,016 - INFO - Password reset successful for user ishikasadhwani3@gmail.com
+2025-06-12 00:47:58,847 - INFO - Order history requested by user_id=2
+2025-06-12 00:47:58,855 - INFO - Found 1 orders for user_id=2

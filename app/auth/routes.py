@@ -1,9 +1,11 @@
+import uuid
 from fastapi import APIRouter, HTTPException, status, Depends
 from sqlalchemy.orm import Session
 from app.auth import schemas, models, utils
 from app.auth.schemas import ForgotPassword, ResetPassword
 from app.auth.utils import hash_password, verify_password, generate_reset_token, send_reset_email
-from datetime import datetime
+from datetime import datetime, timedelta
+from app.core.config import logger
 from app.utils import oauth2
 from app.auth.models import User, PasswordResetToken
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
@@ -13,8 +15,10 @@ router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 @router.post("/signup", status_code=status.HTTP_201_CREATED)
 def signup(user: schemas.UserSignup, db: Session = Depends(get_db)):
+    logger.info(f"Signup attempt for email: {user.email}")
     existing_user = db.query(models.User).filter_by(email=user.email).first()
     if existing_user:
+        logger.warning(f"Signup failed: Email already registered - {user.email}")
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered.")
     
     hashed_pwd = utils.hash_password(user.password)
@@ -22,19 +26,24 @@ def signup(user: schemas.UserSignup, db: Session = Depends(get_db)):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    logger.info(f"User created successfully: {user.email}")
     return {"message": "User created successfully."}
 
 @router.post("/signin")
 def login(users_credentials: OAuth2PasswordRequestForm=Depends(), db:Session = Depends(get_db)):
+    logger.info(f"Login attempt for email: {users_credentials.username}")
     user= db.query(User).filter(User.email == users_credentials.username).first()
 
     if not user:
+        logger.warning(f"Login failed: Invalid Email - {users_credentials.username}")
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail= "Invalid Email")
     
     if not verify_password(users_credentials.password, user.hashed_password):
+        logger.warning(f"Login failed: Invalid Password for email - {users_credentials.username}")
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Password")
     
     token_data = {"user_id": user.id, "role": user.role}
+    logger.info(f"Login successful for email: {users_credentials.username}")
     return {
         "access_token": oauth2.create_access_token(token_data),
         "refresh_token": oauth2.create_refresh_token(token_data),
@@ -42,35 +51,73 @@ def login(users_credentials: OAuth2PasswordRequestForm=Depends(), db:Session = D
         "user": user.email
     }
 
-@router.post("/forgot-password",status_code=status.HTTP_201_CREATED)
-def secure_forgot_password(request: ForgotPassword, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.email == request.email).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found.")
+# @router.post("/forgot-password",status_code=status.HTTP_201_CREATED)
+# def secure_forgot_password(request: ForgotPassword, db: Session = Depends(get_db)):
+#     logger.info(f"Forgot password requested for email: {request.email}")
+#     user = db.query(User).filter(User.email == request.email).first()
+#     if not user:
+#         logger.warning(f"Forgot password failed: User not found - {request.email}")
+#         raise HTTPException(status_code=404, detail="User not found.")
 
-    token, expires_at = generate_reset_token()
-    reset_token = PasswordResetToken(token=token, user_id=user.id, expires_at=expires_at)
+#     token, expires_at = generate_reset_token()
+#     reset_token = PasswordResetToken(token=token, user_id=user.id, expires_at=expires_at)
+#     db.add(reset_token)
+#     db.commit()
+#     logger.info(f"Password reset token created for user_id={user.id}, email={user.email}")
+
+#     return {"message": "Reset token created", "token": token}  
+
+from app.utils.email import send_reset_email
+
+@router.post("/forgot-password",status_code=status.HTTP_201_CREATED)
+def forgot_password(data: schemas.ForgotPassword, db: Session = Depends(get_db)):
+    logger.info(f"Forgot password requested for email: {data.email}")
+    user = db.query(User).filter_by(email=data.email).first()
+    if not user:
+        logger.warning(f"Forgot password failed: User not found - {data.email}")
+        raise HTTPException(status_code=404, detail="No user with this email found.")
+
+    reset_token = PasswordResetToken(
+        user_id=user.id,
+        token=str(uuid.uuid4()),
+        expires_at=datetime.utcnow() + timedelta(minutes=30)
+    )
     db.add(reset_token)
     db.commit()
-    
-    return {"message": "Reset token created", "token": token}  
 
+    #  Send actual email
+    send_reset_email(user.email, reset_token.token)
+    logger.info(f"Password reset token created for user_id={user.id}, email={user.email}")
+
+    return {"message": "Reset link has been sent to your email.",
+            "token": reset_token.token}
 
 @router.post("/reset-password")
 def secure_reset_password(request: ResetPassword, db: Session = Depends(get_db)):
-    token_entry = db.query(PasswordResetToken).filter(PasswordResetToken.token == request.token).first()
+    logger.info(f"Password reset attempt with token: {request.token}")
 
-    if not token_entry or token_entry.expires_at < datetime.utcnow():
+    token_entry = db.query(PasswordResetToken).filter(
+        PasswordResetToken.token == request.token,
+        PasswordResetToken.used == False  # Only allow unused
+    ).first()
+
+    if not token_entry:
+        logger.warning(f"Password reset failed: Invalid token")
         raise HTTPException(status_code=400, detail="Invalid or expired token.")
+
+    if token_entry.expires_at < datetime.utcnow():
+        logger.warning(f"Token expired: {request.token}")
+        raise HTTPException(status_code=400, detail="Token has expired.")
 
     user = db.query(User).filter(User.id == token_entry.user_id).first()
     if not user:
+        logger.error(f"Password reset failed: User not found for token - {request.token}")
         raise HTTPException(status_code=404, detail="User not found.")
-    user.hashed_password = hash_password(request.new_password)
-    print(user.hashed_password)
 
-    # Invalidate token after use
-    db.delete(token_entry)
+    user.hashed_password = hash_password(request.new_password)
+    token_entry.used = True  # Mark token as used
+
     db.commit()
+    logger.info(f"Password reset successful for user {user.email}")
 
     return {"message": "Password successfully reset"}

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Enum, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, Enum, ForeignKey, DateTime
 from app.core.database import Base
 import enum
 from sqlalchemy.orm import relationship
@@ -27,5 +27,6 @@ class PasswordResetToken(Base):
     token = Column(String, unique=True, nullable=False, index=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     expires_at = Column(DateTime, nullable=False)
+    used=Column(Boolean, default=False)
 
     user = relationship("User")
