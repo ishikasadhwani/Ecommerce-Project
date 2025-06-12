@@ -4,7 +4,7 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from sqlalchemy.orm import Session
 from app.auth import schemas, models, utils
 from app.auth.schemas import ForgotPassword, ResetPassword
-from app.auth.utils import hash_password, verify_password, generate_reset_token, send_reset_email
+from app.auth.utils import hash_password, validate_password_strength, verify_password, generate_reset_token, send_reset_email
 from datetime import datetime, timedelta
 from app.core.config import logger
 from app.utils import oauth2
@@ -22,33 +22,7 @@ def signup(user: schemas.UserSignup, db: Session = Depends(get_db)):
         logger.warning(f"Signup failed: Email already registered - {user.email}")
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered.")
     
-    password = user.password
-    if len(password) < 8:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must be at least 8 characters long."
-        )
-    if not re.search(r"[A-Z]", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one uppercase letter."
-        )
-    if not re.search(r"[a-z]", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one lowercase letter."
-        )
-    if not re.search(r"\d", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one digit."
-        )
-    if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one special character."
-        )
-
+    validate_password_strength(user.password)
     hashed_pwd = utils.hash_password(user.password)
     new_user = models.User(name=user.name, email=user.email, hashed_password=hashed_pwd, role=user.role)
     db.add(new_user)
@@ -81,21 +55,6 @@ def login(users_credentials: OAuth2PasswordRequestForm=Depends(), db:Session = D
         
     }
 
-# @router.post("/forgot-password",status_code=status.HTTP_201_CREATED)
-# def secure_forgot_password(request: ForgotPassword, db: Session = Depends(get_db)):
-#     logger.info(f"Forgot password requested for email: {request.email}")
-#     user = db.query(User).filter(User.email == request.email).first()
-#     if not user:
-#         logger.warning(f"Forgot password failed: User not found - {request.email}")
-#         raise HTTPException(status_code=404, detail="User not found.")
-
-#     token, expires_at = generate_reset_token()
-#     reset_token = PasswordResetToken(token=token, user_id=user.id, expires_at=expires_at)
-#     db.add(reset_token)
-#     db.commit()
-#     logger.info(f"Password reset token created for user_id={user.id}, email={user.email}")
-
-#     return {"message": "Reset token created", "token": token}  
 
 from app.utils.email import send_reset_email
 
@@ -144,34 +103,7 @@ def secure_reset_password(request: ResetPassword, db: Session = Depends(get_db))
         logger.error(f"Password reset failed: User not found for token - {request.token}")
         raise HTTPException(status_code=404, detail="User not found.")
 
-    password=request.new_password
-    password = user.password
-
-    if len(password) < 8:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must be at least 8 characters long."
-        )
-    if not re.search(r"[A-Z]", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one uppercase letter."
-        )
-    if not re.search(r"[a-z]", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one lowercase letter."
-        )
-    if not re.search(r"\d", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one digit."
-        )
-    if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Password must include at least one special character."
-        )
+    validate_password_strength(request.new_password)
 
     user.hashed_password = hash_password(request.new_password)
     token_entry.used = True  # Mark token as used
