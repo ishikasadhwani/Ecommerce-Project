@@ -26,3 +26,4 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-12 18:50:47,536 - WARNING - Login failed: Invalid Email - vanshika06@gmail.co
 2025-06-12 20:06:54,595 - INFO - Signup attempt for email: kajal@gmail.com
 2025-06-12 20:07:53,987 - INFO - Signup attempt for email: kajal@g.com
+2025-06-12 20:21:15,265 - INFO - Signup attempt for email: kajal@gmail.com

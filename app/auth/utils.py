@@ -17,10 +17,6 @@ def generate_reset_token(expiry_minutes=15):
     expires_at = datetime.utcnow() + timedelta(minutes=expiry_minutes)
     return token, expires_at
 
-def send_reset_email(email: str, token: str):
-    print(f"Send email to {email} with token: {token}")
-
-
 def validate_password_strength(password: str):
     """
     Validates the strength of a password.

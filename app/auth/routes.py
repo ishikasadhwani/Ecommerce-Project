@@ -1,16 +1,16 @@
-import re
 import uuid
 from fastapi import APIRouter, HTTPException, status, Depends
 from sqlalchemy.orm import Session
 from app.auth import schemas, models, utils
 from app.auth.schemas import ForgotPassword, ResetPassword
-from app.auth.utils import hash_password, validate_password_strength, verify_password, generate_reset_token, send_reset_email
+from app.auth.utils import hash_password, validate_password_strength, verify_password, generate_reset_token
 from datetime import datetime, timedelta
 from app.core.config import logger
 from app.utils import oauth2
 from app.auth.models import User, PasswordResetToken
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from app.core.database import get_db
+from app.utils.email import send_reset_email
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -56,7 +56,6 @@ def login(users_credentials: OAuth2PasswordRequestForm=Depends(), db:Session = D
     }
 
 
-from app.utils.email import send_reset_email
 
 @router.post("/forgot-password",status_code=status.HTTP_201_CREATED)
 def forgot_password(data: schemas.ForgotPassword, db: Session = Depends(get_db)):
