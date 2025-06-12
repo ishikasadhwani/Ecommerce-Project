@@ -1,3 +1,4 @@
+import re
 import uuid
 from fastapi import APIRouter, HTTPException, status, Depends
 from sqlalchemy.orm import Session
@@ -21,6 +22,33 @@ def signup(user: schemas.UserSignup, db: Session = Depends(get_db)):
         logger.warning(f"Signup failed: Email already registered - {user.email}")
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered.")
     
+    password = user.password
+    if len(password) < 8:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must be at least 8 characters long."
+        )
+    if not re.search(r"[A-Z]", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one uppercase letter."
+        )
+    if not re.search(r"[a-z]", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one lowercase letter."
+        )
+    if not re.search(r"\d", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one digit."
+        )
+    if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one special character."
+        )
+
     hashed_pwd = utils.hash_password(user.password)
     new_user = models.User(name=user.name, email=user.email, hashed_password=hashed_pwd, role=user.role)
     db.add(new_user)
@@ -45,10 +73,12 @@ def login(users_credentials: OAuth2PasswordRequestForm=Depends(), db:Session = D
     token_data = {"user_id": user.id, "role": user.role}
     logger.info(f"Login successful for email: {users_credentials.username}")
     return {
+        "message": "Login Successful",
         "access_token": oauth2.create_access_token(token_data),
         "refresh_token": oauth2.create_refresh_token(token_data),
         "token_type": "bearer",
         "user": user.email
+        
     }
 
 # @router.post("/forgot-password",status_code=status.HTTP_201_CREATED)
@@ -113,6 +143,35 @@ def secure_reset_password(request: ResetPassword, db: Session = Depends(get_db))
     if not user:
         logger.error(f"Password reset failed: User not found for token - {request.token}")
         raise HTTPException(status_code=404, detail="User not found.")
+
+    password=request.new_password
+    password = user.password
+
+    if len(password) < 8:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must be at least 8 characters long."
+        )
+    if not re.search(r"[A-Z]", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one uppercase letter."
+        )
+    if not re.search(r"[a-z]", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one lowercase letter."
+        )
+    if not re.search(r"\d", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one digit."
+        )
+    if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Password must include at least one special character."
+        )
 
     user.hashed_password = hash_password(request.new_password)
     token_entry.used = True  # Mark token as used

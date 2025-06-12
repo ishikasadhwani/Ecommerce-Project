@@ -16,3 +16,13 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-12 00:20:40,016 - INFO - Password reset successful for user ishikasadhwani3@gmail.com
 2025-06-12 00:47:58,847 - INFO - Order history requested by user_id=2
 2025-06-12 00:47:58,855 - INFO - Found 1 orders for user_id=2
+2025-06-12 18:46:33,382 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-12 18:46:34,351 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-12 18:49:56,230 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-12 18:49:57,435 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-12 18:50:13,861 - INFO - Login attempt for email: vanshika0@gmail.com
+2025-06-12 18:50:13,869 - WARNING - Login failed: Invalid Email - vanshika0@gmail.com
+2025-06-12 18:50:47,535 - INFO - Login attempt for email: vanshika06@gmail.co
+2025-06-12 18:50:47,536 - WARNING - Login failed: Invalid Email - vanshika06@gmail.co
+2025-06-12 20:06:54,595 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-12 20:07:53,987 - INFO - Signup attempt for email: kajal@g.com
