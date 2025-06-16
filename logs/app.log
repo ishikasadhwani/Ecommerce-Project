@@ -109,3 +109,15 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-16 19:13:32,408 - WARNING - Login failed: Invalid Password for email - ishikasadhwani3@gmail.com
 2025-06-16 19:13:39,377 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
 2025-06-16 19:13:40,170 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-16 19:32:41,390 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 19:32:42,444 - INFO - Login successful
+2025-06-16 20:08:49,620 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-16 20:08:50,573 - INFO - User created successfully: kajal@gmail.com
+2025-06-16 20:09:05,316 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 20:09:06,243 - INFO - Login successful
+2025-06-16 20:09:17,139 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-16 20:09:22,074 - INFO - Password reset token created
+2025-06-16 20:09:55,046 - INFO - Password reset attempt
+2025-06-16 20:09:55,052 - WARNING - Invalid or expired token
+2025-06-16 20:10:31,029 - INFO - Password reset attempt
+2025-06-16 20:10:31,751 - INFO - Password reset successful for user ishikasadhwani3@gmail.com
