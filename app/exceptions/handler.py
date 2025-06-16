@@ -24,6 +24,25 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
     for error in exc.errors():
         loc = error.get("loc", [])
         msg = error.get("msg", "Invalid input.")
+        
+        if "username" in loc:
+            return JSONResponse(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                content={
+                    "error": True,
+                    "message": "Please enter username.",
+                    "code": status.HTTP_400_BAD_REQUEST,
+                },
+            )
+        elif "password" in loc:
+            return JSONResponse(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                content={
+                    "error": True,
+                    "message": "Please enter password.",
+                    "code": status.HTTP_400_BAD_REQUEST,
+                },
+            )
 
         if "email" in loc:
             return JSONResponse(
@@ -40,7 +59,7 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
         status_code=status.HTTP_400_BAD_REQUEST,
         content={
             "error": True,
-            "message": "Validation failed.",
+            "message": "Please enter all required fields.",
             "code": status.HTTP_400_BAD_REQUEST,
         },
     )

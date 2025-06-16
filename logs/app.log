@@ -103,3 +103,9 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-16 15:12:36,863 - INFO - Product updated successfully: product_id=8 by admin_id=1
 2025-06-16 15:14:25,498 - INFO - Product delete requested by admin_id=1 for product_id=8
 2025-06-16 15:14:25,512 - INFO - Product deleted successfully: product_id=8 by admin_id=1
+2025-06-16 18:55:43,324 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 18:55:44,264 - WARNING - Login failed: Invalid Password for email - ishikasadhwani3@gmail.com
+2025-06-16 19:13:31,412 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 19:13:32,408 - WARNING - Login failed: Invalid Password for email - ishikasadhwani3@gmail.com
+2025-06-16 19:13:39,377 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 19:13:40,170 - INFO - Login successful for email: ishikasadhwani3@gmail.com
