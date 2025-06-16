@@ -14,7 +14,6 @@ router = APIRouter(
     tags=["Orders"]
 )
 
-
 @router.get("/orders", response_model=List[schemas.OrderOutHistory])
 def get_user_orders(
     db: Session = Depends(get_db),

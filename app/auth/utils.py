@@ -3,8 +3,6 @@ import re
 from passlib.context import CryptContext
 import uuid
 from datetime import datetime, timedelta
-from app.auth.models import User
-from app.products.models import Product
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -51,13 +49,3 @@ def validate_password_strength(password: str):
         )
 
 
-def is_product_owner(product: Product, admin: User):
-    """
-    Checks if the given admin is the creator of the product.
-    Raises HTTPException(403) if not.
-    """
-    if product.created_by != admin.id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="You are not authorized to modify or delete this product."
-        )

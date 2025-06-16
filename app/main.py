@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse 
 from app.auth.models import User
 from app.auth.routes import router as auth_router
@@ -9,6 +10,11 @@ from app.checkout.routes import router as checkout_router
 from app.orders.routes import router as orders_router
 from app.cart.models import CartItem
 from app.core.database import Base, engine
+from app.exceptions.handler import (
+    custom_http_exception_handler,
+    custom_validation_exception_handler,
+    global_exception_handler,
+)
 
 app = FastAPI()
 
@@ -21,16 +27,10 @@ app.include_router(cart_router)
 app.include_router(orders_router)
 app.include_router(checkout_router)
 
-@app.exception_handler(HTTPException)
-async def custom_http_exception_handler(request: Request, exc: HTTPException):
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "error": True,
-            "message": exc.detail,
-            "code": exc.status_code
-        },
-    )
+app.add_exception_handler(RequestValidationError, handler=custom_validation_exception_handler)
+app.add_exception_handler(HTTPException, handler=custom_http_exception_handler)
+app.add_exception_handler(Exception, handler= global_exception_handler)
+
 
 @app.get("/")
 def read_root():
