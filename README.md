@@ -54,6 +54,7 @@ Ensure the following are installed:
 
 ## 📁 Folder Structure
 
+```
 Ecommerce-Project/
 ├── alembic/
 │ └── versions/
@@ -82,6 +83,7 @@ Ecommerce-Project/
 ├── .env
 ├── alembic.ini
 └── README.md
+```
 
 ---
 
