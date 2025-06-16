@@ -266,3 +266,10 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 00:55:58,793 - INFO - Public search for keyword='laptop'
 2025-06-17 00:56:10,181 - INFO - Public search for keyword='fridge'
 2025-06-17 00:57:42,169 - INFO - Public product detail requested for id=10
+2025-06-17 01:05:49,371 - INFO - Login attempt for email: kajal@gmail.com
+2025-06-17 01:05:49,860 - INFO - Login successful
+2025-06-17 01:06:19,078 - INFO - User 3 adding product 10 (qty=1) to cart.
+2025-06-17 01:06:29,783 - INFO - Fetching cart items for user_id=3
+2025-06-17 01:07:01,020 - INFO - User 3 updating quantity of product 10 to 2
+2025-06-17 01:08:21,556 - INFO - User 3 removing product 3 from cart.
+2025-06-17 01:08:28,415 - INFO - User 3 removing product 10 from cart.
