@@ -92,8 +92,8 @@ Ecommerce-Project/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ecommerce-backend.git
-cd ecommerce-backend
+git clone https://github.com/ishikasadhwani/Ecommerce-Project.git
+cd Ecommerce-Project
 ```
 
 ### 2. Create Virtual Environment
@@ -144,11 +144,12 @@ Launch the FastAPI server:
 
 ```bash
 uvicorn main:app --reload
+```
+
 Once the server is running, you can explore the API documentation:
 
 Swagger UI → http://localhost:8000/docs
 ReDoc → http://localhost:8000/redoc
-```
 
 ---
 
@@ -165,8 +166,8 @@ Use the included Postman collection or Swagger UI to test the API endpoints.
 
 ### 📦 Product Endpoints
 
-- `GET /public/products/` – List all public products
-- `GET /public/search?query=...` – Search products
+- `GET /products/` – List all public products
+- `GET /products/search?query=...` – Search products
 - `POST /admin/products/` – Admin: create product
 - `PUT /admin/products/{id}` – Admin: update product
 - `DELETE /admin/products/{id}` – Admin: delete product
@@ -175,12 +176,12 @@ Use the included Postman collection or Swagger UI to test the API endpoints.
 
 - `POST /cart/add` – Add item to cart
 - `GET /cart/view` – View cart items
-- `PUT /cart/update` – Update quantity
+- `PUT /cart/update/{product_id}` – Update quantity
 - `DELETE /cart/delete/{product_id}` – Remove item
 
 ### 📑 Orders & Checkout
 
-- `POST /orders/checkout` – Place an order
+- `POST /checkout` – Place an order
 - `GET /orders/` – Get order history
 - `GET /orders/{order_id}` – Get order details
 
