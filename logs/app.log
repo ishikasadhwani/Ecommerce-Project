@@ -276,3 +276,9 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 01:18:00,432 - INFO - User 3 adding product 10 (qty=1) to cart.
 2025-06-17 01:21:03,223 - INFO - Fetching cart items for user_id=3
 2025-06-17 01:22:26,059 - INFO - Checkout successful for user_id=3, order_id=12
+2025-06-17 01:32:54,887 - INFO - Login attempt for email: kajal@gmail.com
+2025-06-17 01:32:55,307 - INFO - Login successful
+2025-06-17 01:33:19,806 - INFO - Order history requested by user_id=3
+2025-06-17 01:33:19,810 - INFO - Found 1 orders for user_id=3
+2025-06-17 01:33:34,174 - INFO - Order detail requested for order_id=12 by user_id=3
+2025-06-17 01:33:34,183 - INFO - Order detail returned for order_id=12 by user_id=3
