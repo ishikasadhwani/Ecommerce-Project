@@ -48,6 +48,8 @@ def checkout(
         total_amount += product.price * item.quantity
         order_items.append({
             "product_id": product.id,
+            "product_name": product.name,
+            "product_description": product.description,
             "quantity": item.quantity,
             "price_at_purchase": product.price
         })

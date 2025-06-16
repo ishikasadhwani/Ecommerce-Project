@@ -26,7 +26,6 @@ class MessageResponse(BaseModel):
     message: str
 
 class ProductOutOrders(BaseModel):
-    id: int
     name: str
     description: Optional[str]
     image_url: Optional[HttpUrl]

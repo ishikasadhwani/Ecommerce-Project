@@ -1,20 +1,21 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy.orm import joinedload
-from typing import List
+from typing import List, Union
 from app.core.database import get_db
 from app.auth.models import User
 from app.utils.oauth2 import get_user_only
 from app.products.models import Product
 from app.cart.models import CartItem
 from app.orders import models, schemas
+from app.orders.schemas import MessageResponse
 from app.core.config import logger 
 
 router = APIRouter(
     tags=["Orders"]
 )
 
-@router.get("/orders", response_model=List[schemas.OrderOutHistory])
+@router.get("/orders", response_model=Union[List[schemas.OrderOutHistory], MessageResponse])
 def get_user_orders(
     db: Session = Depends(get_db),
     user: User = Depends(get_user_only)

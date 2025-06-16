@@ -121,3 +121,133 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-16 20:09:55,052 - WARNING - Invalid or expired token
 2025-06-16 20:10:31,029 - INFO - Password reset attempt
 2025-06-16 20:10:31,751 - INFO - Password reset successful for user ishikasadhwani3@gmail.com
+2025-06-16 20:42:29,511 - INFO - Login attempt for email: kajal@gmail.com
+2025-06-16 20:42:29,974 - INFO - Login successful
+2025-06-16 20:42:54,732 - INFO - Order history requested by user_id=3
+2025-06-16 20:42:54,742 - INFO - No previous orders found for user_id=3
+2025-06-16 20:44:54,166 - INFO - Order history requested by user_id=3
+2025-06-16 20:44:54,178 - INFO - No previous orders found for user_id=3
+2025-06-16 20:45:15,786 - INFO - Order history requested by user_id=3
+2025-06-16 20:45:15,786 - INFO - No previous orders found for user_id=3
+2025-06-16 20:50:50,837 - INFO - Order history requested by user_id=3
+2025-06-16 20:50:50,852 - INFO - No previous orders found for user_id=3
+2025-06-16 20:52:19,290 - INFO - Order history requested by user_id=3
+2025-06-16 20:52:19,303 - INFO - No previous orders found for user_id=3
+2025-06-16 20:54:18,834 - INFO - Order detail requested for order_id=4 by user_id=3
+2025-06-16 20:54:18,859 - WARNING - Order not found: order_id=4 for user_id=3
+2025-06-16 20:54:29,472 - INFO - Order detail requested for order_id=10 by user_id=3
+2025-06-16 20:54:29,476 - WARNING - Order not found: order_id=10 for user_id=3
+2025-06-16 20:59:22,006 - INFO - Order history requested by user_id=3
+2025-06-16 20:59:22,022 - INFO - No previous orders found for user_id=3
+2025-06-16 20:59:31,741 - INFO - Order history requested by user_id=3
+2025-06-16 20:59:31,749 - INFO - No previous orders found for user_id=3
+2025-06-16 21:02:40,148 - INFO - Order detail requested for order_id=10 by user_id=3
+2025-06-16 21:02:40,161 - WARNING - Order not found: order_id=10 for user_id=3
+2025-06-16 21:13:04,262 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 21:13:05,296 - INFO - Login successful
+2025-06-16 21:13:22,585 - INFO - Order history requested by user_id=2
+2025-06-16 21:13:22,597 - INFO - Found 4 orders for user_id=2
+2025-06-16 21:18:08,159 - INFO - Add to cart requested by user_id=2 for product_id=9 (qty=1)
+2025-06-16 21:18:08,177 - INFO - Added new product_id=9 to cart for user_id=2
+2025-06-16 21:18:28,467 - INFO - Checkout initiated by user_id=2
+2025-06-16 21:18:28,482 - INFO - Order created (order_id=5) for user_id=2
+2025-06-16 21:18:28,490 - INFO - Checkout successful for user_id=2, order_id=5
+2025-06-16 21:18:54,334 - INFO - Order history requested by user_id=2
+2025-06-16 21:18:54,342 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:19:46,104 - INFO - Order detail requested for order_id=5 by user_id=2
+2025-06-16 21:19:46,112 - INFO - Order detail returned for order_id=5 by user_id=2
+2025-06-16 21:31:11,392 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-16 21:31:18,198 - INFO - Password reset token created
+2025-06-16 21:31:18,304 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 21:31:18,669 - INFO - Login successful
+2025-06-16 21:31:18,745 - INFO - Password reset attempt
+2025-06-16 21:31:18,750 - WARNING - Invalid or expired token
+2025-06-16 21:31:18,823 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-16 21:31:18,831 - WARNING - Signup failed: Email already registered - kajal@gmail.com
+2025-06-16 21:36:09,433 - INFO - Order history requested by user_id=2
+2025-06-16 21:36:09,443 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:36:09,533 - INFO - Order history requested by user_id=2
+2025-06-16 21:36:09,533 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:37:00,434 - INFO - Order history requested by user_id=2
+2025-06-16 21:37:00,441 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:37:15,596 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-16 21:37:15,617 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-16 21:39:53,307 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-16 21:39:53,354 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-16 21:41:04,445 - INFO - Order detail requested for order_id=5 by user_id=2
+2025-06-16 21:41:04,471 - INFO - Order detail returned for order_id=5 by user_id=2
+2025-06-16 21:41:32,642 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-16 21:41:32,647 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-16 21:55:22,438 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 21:55:23,464 - INFO - Login successful
+2025-06-16 21:55:51,741 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 21:55:51,758 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 21:56:02,139 - INFO - Checkout initiated by user_id=2
+2025-06-16 21:56:02,151 - INFO - Order created (order_id=6) for user_id=2
+2025-06-16 21:56:02,177 - INFO - Checkout successful for user_id=2, order_id=6
+2025-06-16 21:56:54,607 - INFO - Order detail requested for order_id=6 by user_id=2
+2025-06-16 21:56:54,618 - INFO - Order detail returned for order_id=6 by user_id=2
+2025-06-16 22:03:35,953 - INFO - Add to cart requested by user_id=2 for product_id=11 (qty=1)
+2025-06-16 22:03:35,979 - INFO - Added new product_id=11 to cart for user_id=2
+2025-06-16 22:03:45,724 - INFO - Checkout initiated by user_id=2
+2025-06-16 22:03:45,729 - INFO - Order created (order_id=7) for user_id=2
+2025-06-16 22:03:45,754 - INFO - Checkout successful for user_id=2, order_id=7
+2025-06-16 22:04:02,206 - INFO - Order history requested by user_id=2
+2025-06-16 22:04:02,206 - INFO - Found 7 orders for user_id=2
+2025-06-16 22:04:16,927 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:04:16,948 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:04:56,023 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:04:56,032 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:11:11,540 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:11:11,588 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:37:34,828 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 22:37:35,785 - INFO - Login successful
+2025-06-16 22:38:15,621 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:38:15,645 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:39:29,379 - INFO - Order detail requested for order_id=6 by user_id=2
+2025-06-16 22:39:29,379 - INFO - Order detail returned for order_id=6 by user_id=2
+2025-06-16 22:40:18,475 - INFO - Order detail requested for order_id=6 by user_id=2
+2025-06-16 22:40:18,497 - INFO - Order detail returned for order_id=6 by user_id=2
+2025-06-16 22:40:26,030 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:40:26,030 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 23:01:30,697 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 23:01:31,647 - INFO - Login successful
+2025-06-16 23:02:18,347 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 23:02:19,097 - INFO - Login successful
+2025-06-16 23:02:45,495 - INFO - Add to cart requested by user_id=2 for product_id=11 (qty=1)
+2025-06-16 23:02:45,503 - WARNING - Add to cart failed: Product not found (product_id=11) by user_id=2
+2025-06-16 23:03:05,623 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 23:03:05,639 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 23:03:11,327 - INFO - Add to cart requested by user_id=2 for product_id=12 (qty=1)
+2025-06-16 23:03:11,333 - INFO - Added new product_id=12 to cart for user_id=2
+2025-06-16 23:03:27,099 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:03:27,106 - INFO - Order created (order_id=8) for user_id=2
+2025-06-16 23:03:27,139 - INFO - Checkout successful for user_id=2, order_id=8
+2025-06-16 23:34:44,477 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 23:34:44,866 - INFO - Login successful
+2025-06-16 23:35:13,595 - INFO - Add to cart requested by user_id=2 for product_id=12 (qty=1)
+2025-06-16 23:35:13,605 - INFO - Added new product_id=12 to cart for user_id=2
+2025-06-16 23:35:27,215 - INFO - Get cart items requested by user_id=2
+2025-06-16 23:35:46,537 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:35:46,542 - INFO - Order created (order_id=9) for user_id=2
+2025-06-16 23:35:46,560 - INFO - Checkout successful for user_id=2, order_id=9
+2025-06-16 23:37:17,279 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:37:17,283 - WARNING - Checkout failed: Cart empty for user_id=2
+2025-06-16 23:37:32,818 - INFO - Order history requested by user_id=2
+2025-06-16 23:37:32,823 - INFO - Found 1 orders for user_id=2
+2025-06-16 23:37:47,045 - INFO - Order detail requested for order_id=9 by user_id=2
+2025-06-16 23:37:47,058 - INFO - Order detail returned for order_id=9 by user_id=2
+2025-06-16 23:38:16,153 - INFO - Add to cart requested by user_id=2 for product_id=12 (qty=1)
+2025-06-16 23:38:16,158 - INFO - Added new product_id=12 to cart for user_id=2
+2025-06-16 23:38:21,626 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 23:38:21,629 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 23:38:28,425 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:38:28,431 - INFO - Order created (order_id=10) for user_id=2
+2025-06-16 23:38:28,449 - INFO - Checkout successful for user_id=2, order_id=10
+2025-06-16 23:38:54,930 - INFO - Order detail requested for order_id=10 by user_id=2
+2025-06-16 23:38:54,933 - INFO - Order detail returned for order_id=10 by user_id=2
+2025-06-16 23:46:06,352 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 23:46:06,364 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 23:46:14,054 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:46:14,060 - INFO - Order created (order_id=11) for user_id=2
+2025-06-16 23:46:14,076 - INFO - Checkout successful for user_id=2, order_id=11

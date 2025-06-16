@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, Float, DateTime, Enum
+from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime, Enum
 from sqlalchemy.orm import relationship
 from app.products.models import Product
 from datetime import datetime
@@ -28,9 +28,12 @@ class OrderItem(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)
-    product_id = Column(Integer, ForeignKey("products.id", ondelete="CASCADE"))
+    product_id = Column(Integer, ForeignKey("products.id", ondelete="SET NULL"),nullable=True)
+    product_name = Column(String, nullable=False)  # snapshot
+    product_description = Column(String, nullable=True)  # snapshot
     quantity = Column(Integer, nullable=False)
-    price_at_purchase = Column(Float, nullable=False)  
-
+    price_at_purchase = Column(Float, nullable=False)
+      
+ 
     order = relationship("Order", back_populates="items")
     product = relationship("Product")
