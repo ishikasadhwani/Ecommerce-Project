@@ -273,3 +273,6 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 01:07:01,020 - INFO - User 3 updating quantity of product 10 to 2
 2025-06-17 01:08:21,556 - INFO - User 3 removing product 3 from cart.
 2025-06-17 01:08:28,415 - INFO - User 3 removing product 10 from cart.
+2025-06-17 01:18:00,432 - INFO - User 3 adding product 10 (qty=1) to cart.
+2025-06-17 01:21:03,223 - INFO - Fetching cart items for user_id=3
+2025-06-17 01:22:26,059 - INFO - Checkout successful for user_id=3, order_id=12
