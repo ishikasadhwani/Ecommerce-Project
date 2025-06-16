@@ -251,3 +251,18 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-16 23:46:14,054 - INFO - Checkout initiated by user_id=2
 2025-06-16 23:46:14,060 - INFO - Order created (order_id=11) for user_id=2
 2025-06-16 23:46:14,076 - INFO - Checkout successful for user_id=2, order_id=11
+2025-06-17 00:41:17,385 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-17 00:41:17,827 - INFO - Login successful
+2025-06-17 00:42:55,779 - INFO - Creating product 'Samsung Galaxy M35' by admin_id=1
+2025-06-17 00:42:55,805 - INFO - Product created successfully: id=13, name=Samsung Galaxy M35
+2025-06-17 00:43:56,569 - INFO - Update request for product_id=8 by admin_id=1
+2025-06-17 00:44:20,007 - INFO - Update request for product_id=13 by admin_id=1
+2025-06-17 00:44:43,598 - INFO - Product list requested by admin_id=1
+2025-06-17 00:45:14,005 - INFO - Product detail requested by admin_id=1 for product_id=10
+2025-06-17 00:52:25,698 - INFO - Public product list requested
+2025-06-17 00:53:16,605 - INFO - Public product list requested
+2025-06-17 00:53:46,564 - INFO - Public product list requested
+2025-06-17 00:55:26,622 - INFO - Public product detail requested for id=10
+2025-06-17 00:55:58,793 - INFO - Public search for keyword='laptop'
+2025-06-17 00:56:10,181 - INFO - Public search for keyword='fridge'
+2025-06-17 00:57:42,169 - INFO - Public product detail requested for id=10
