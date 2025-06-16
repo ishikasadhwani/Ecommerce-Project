@@ -4,6 +4,7 @@ from typing import List, Optional, Union
 from app.core.database import get_db
 from app.utils.oauth2 import get_admin_user
 from app.products import models, schemas
+from app.orders.models import OrderItem
 from app.products.schemas import MessageResponse, ProductOut
 from fastapi import Query
 from app.core.config import logger
@@ -11,16 +12,38 @@ from app.core.config import logger
 router = APIRouter(prefix="/admin/products", tags=["Admin - Products"])
 public_router = APIRouter(prefix="/products", tags=["Public - Products"])
 
+# @router.post("/", status_code=status.HTTP_201_CREATED)
+# def create_product(data: schemas.ProductCreate, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+#     logger.info(f"Product creation requested by admin_id={admin.id} for product '{data.name}'")
+#     product_data = data.dict()
+#     product_data["image_url"] = str(product_data["image_url"]) if product_data["image_url"] else None
+#     product_data["price"] = float(product_data["price"])  # Optional: if using Decimal
+#     product = models.Product(**product_data)
+#     db.add(product)
+#     db.commit()
+#     db.refresh(product)
+#     logger.info(f"Product created successfully: id={product.id}, name={product.name}")
+#     return {"message": "Product created successfully."}
+
 @router.post("/", status_code=status.HTTP_201_CREATED)
-def create_product(data: schemas.ProductCreate, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+def create_product(
+    data: schemas.ProductCreate,
+    db: Session = Depends(get_db),
+    admin=Depends(get_admin_user)
+):
     logger.info(f"Product creation requested by admin_id={admin.id} for product '{data.name}'")
+
     product_data = data.dict()
     product_data["image_url"] = str(product_data["image_url"]) if product_data["image_url"] else None
     product_data["price"] = float(product_data["price"])  # Optional: if using Decimal
-    product = models.Product(**product_data)
+
+    # ✅ Add creator relationship
+    product = models.Product(**product_data, created_by=admin.id)
+
     db.add(product)
     db.commit()
     db.refresh(product)
+
     logger.info(f"Product created successfully: id={product.id}, name={product.name}")
     return {"message": "Product created successfully."}
 
@@ -47,10 +70,19 @@ def update_product(
     admin=Depends(get_admin_user)
 ):
     logger.info(f"Product update requested by admin_id={admin.id} for product_id={product_id}")
+    
     product = db.query(models.Product).get(product_id)
     if not product:
         logger.warning(f"Product update failed: product_id={product_id} not found by admin_id={admin.id}")
         raise HTTPException(status_code=404, detail="Product not found")
+
+    # ✅ Authorization check
+    if product.created_by != admin.id:
+        logger.warning(f"Unauthorized update attempt by admin_id={admin.id} on product_id={product_id}")
+        raise HTTPException(
+            status_code=403,
+            detail="You are not authorized to modify this product."
+        )
 
     updates = data.dict(exclude_unset=True)
 
@@ -65,23 +97,73 @@ def update_product(
 
     db.commit()
     db.refresh(product)
+    
     logger.info(f"Product updated successfully: product_id={product_id} by admin_id={admin.id}")
     return {
         "message": "Product updated successfully.",
         "product": product
     }
 
+
+# @router.delete("/{product_id}")
+# def delete_product(product_id: int, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+#     logger.info(f"Product delete requested by admin_id={admin.id} for product_id={product_id}")
+#     product = db.query(models.Product).get(product_id)
+#     if not product:
+#         logger.warning(f"Product delete failed: product_id={product_id} not found by admin_id={admin.id}")
+#         raise HTTPException(status_code=404, detail="Product not found")
+#     db.delete(product)
+#     db.commit()
+#     logger.info(f"Product deleted successfully: product_id={product_id} by admin_id={admin.id}")
+#     return {"message": "Product deleted successfully"}
+
 @router.delete("/{product_id}")
-def delete_product(product_id: int, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+def delete_product(
+    product_id: int,
+    db: Session = Depends(get_db),
+    admin=Depends(get_admin_user)
+):
     logger.info(f"Product delete requested by admin_id={admin.id} for product_id={product_id}")
+    
     product = db.query(models.Product).get(product_id)
     if not product:
         logger.warning(f"Product delete failed: product_id={product_id} not found by admin_id={admin.id}")
         raise HTTPException(status_code=404, detail="Product not found")
+
+    # ✅ Authorization check
+    if product.created_by != admin.id:
+        logger.warning(f"Unauthorized delete attempt by admin_id={admin.id} on product_id={product_id}")
+        raise HTTPException(
+            status_code=403,
+            detail="You are not authorized to delete this product."
+        )
+
     db.delete(product)
     db.commit()
+    
     logger.info(f"Product deleted successfully: product_id={product_id} by admin_id={admin.id}")
     return {"message": "Product deleted successfully"}
+
+
+
+# @router.delete("/{product_id}")
+# def delete_product(product_id: int, db: Session = Depends(get_db), admin=Depends(get_admin_user)):
+#     logger.info(f"Product delete requested by admin_id={admin.id} for product_id={product_id}")
+#     product = db.query(models.Product).get(product_id)
+#     if not product:
+#         logger.warning(f"Product delete failed: product_id={product_id} not found by admin_id={admin.id}")
+#         raise HTTPException(status_code=404, detail="Product not found")
+
+#     # Check for references in order_items
+#     order_item = db.query(OrderItem).filter_by(product_id=product_id).first()
+#     if order_item:
+#         logger.warning(f"Product delete failed: product_id={product_id} is referenced in order_items")
+#         raise HTTPException(status_code=400, detail="Cannot delete product: it is referenced in order items.")
+
+#     db.delete(product)
+#     db.commit()
+#     logger.info(f"Product deleted successfully: product_id={product_id} by admin_id={admin.id}")
+#     return {"message": "Product deleted successfully"}
 
 
 

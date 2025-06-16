@@ -60,7 +60,7 @@ class OrderOut(BaseModel):
 
 class OrderResponseWithMessage(BaseModel):
     message: str
-    order: OrderOut
+    order: OrderOutHistory
 
     class Config:
         orm_mode = True

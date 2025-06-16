@@ -27,3 +27,79 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-12 20:06:54,595 - INFO - Signup attempt for email: kajal@gmail.com
 2025-06-12 20:07:53,987 - INFO - Signup attempt for email: kajal@g.com
 2025-06-12 20:21:15,265 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-13 15:46:45,377 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-13 15:46:46,017 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-13 15:48:07,987 - INFO - Login attempt for email: vanshikasadhwani3@gmail.com
+2025-06-13 15:48:07,987 - WARNING - Login failed: Invalid Email - vanshikasadhwani3@gmail.com
+2025-06-13 15:51:06,638 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 15:51:07,694 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 16:18:18,456 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 16:18:19,084 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 16:23:31,994 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:26:33,769 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:35:21,624 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:37:28,071 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:37:28,092 - WARNING - Product delete failed: product_id=1 is referenced in order_items
+2025-06-13 17:13:52,761 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 17:13:53,745 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 17:14:17,278 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 17:14:17,294 - WARNING - Product delete failed: product_id=1 is referenced in order_items
+2025-06-13 17:14:59,018 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 17:37:43,323 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-13 17:37:43,706 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-13 17:38:18,087 - INFO - Add to cart requested by user_id=2 for product_id=3 (qty=2)
+2025-06-13 17:38:18,097 - INFO - Added new product_id=3 to cart for user_id=2
+2025-06-13 17:38:36,127 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:38:36,139 - INFO - Order created (order_id=1) for user_id=2
+2025-06-13 17:38:36,154 - INFO - Checkout successful for user_id=2, order_id=1
+2025-06-13 17:40:24,268 - INFO - Add to cart requested by user_id=2 for product_id=4 (qty=1)
+2025-06-13 17:40:24,280 - INFO - Added new product_id=4 to cart for user_id=2
+2025-06-13 17:40:30,000 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:40:30,006 - INFO - Order created (order_id=2) for user_id=2
+2025-06-13 17:40:30,024 - INFO - Checkout successful for user_id=2, order_id=2
+2025-06-13 17:41:09,236 - INFO - Product delete requested by admin_id=1 for product_id=4
+2025-06-13 17:41:09,245 - INFO - Product deleted successfully: product_id=4 by admin_id=1
+2025-06-13 17:41:31,334 - INFO - Order detail requested for order_id=1 by user_id=2
+2025-06-13 17:41:31,344 - INFO - Order detail returned for order_id=1 by user_id=2
+2025-06-13 17:41:45,728 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-13 17:41:45,730 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-13 17:43:04,695 - INFO - Get cart items requested by user_id=2
+2025-06-13 17:43:04,696 - INFO - Cart empty for user_id=2
+2025-06-13 17:43:30,568 - INFO - Add to cart requested by user_id=2 for product_id=6 (qty=1)
+2025-06-13 17:43:30,570 - INFO - Added new product_id=6 to cart for user_id=2
+2025-06-13 17:43:37,981 - INFO - Add to cart requested by user_id=2 for product_id=1 (qty=1)
+2025-06-13 17:43:37,984 - INFO - Added new product_id=1 to cart for user_id=2
+2025-06-13 17:43:44,171 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:43:44,175 - INFO - Order created (order_id=3) for user_id=2
+2025-06-13 17:43:44,187 - INFO - Checkout successful for user_id=2, order_id=3
+2025-06-13 17:44:59,449 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 17:44:59,832 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 17:45:15,580 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 17:45:15,586 - INFO - Product deleted successfully: product_id=1 by admin_id=1
+2025-06-13 17:45:49,500 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-13 17:45:49,846 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-13 17:46:18,545 - INFO - Order history requested by user_id=2
+2025-06-13 17:46:18,547 - INFO - Found 3 orders for user_id=2
+2025-06-13 17:52:16,763 - INFO - Add to cart requested by user_id=2 for product_id=5 (qty=1)
+2025-06-13 17:52:16,766 - INFO - Added new product_id=5 to cart for user_id=2
+2025-06-13 17:52:25,558 - INFO - Add to cart requested by user_id=2 for product_id=7 (qty=1)
+2025-06-13 17:52:25,560 - INFO - Added new product_id=7 to cart for user_id=2
+2025-06-13 17:52:33,821 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:52:33,825 - INFO - Order created (order_id=4) for user_id=2
+2025-06-13 17:52:33,836 - INFO - Checkout successful for user_id=2, order_id=4
+2025-06-13 17:53:25,069 - INFO - Order detail requested for order_id=4 by user_id=2
+2025-06-13 17:53:25,072 - INFO - Order detail returned for order_id=4 by user_id=2
+2025-06-13 17:53:58,936 - INFO - Order history requested by user_id=2
+2025-06-13 17:53:58,937 - INFO - Found 4 orders for user_id=2
+2025-06-16 15:09:20,779 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 15:09:21,187 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-16 15:10:44,534 - INFO - Product creation requested by admin_id=1 for product 'Samsung Galaxy S22 Ultra'
+2025-06-16 15:10:44,546 - INFO - Product created successfully: id=8, name=Samsung Galaxy S22 Ultra
+2025-06-16 15:11:38,093 - INFO - Product update requested by admin_id=1 for product_id=2
+2025-06-16 15:11:38,095 - WARNING - Product update failed: product_id=2 not found by admin_id=1
+2025-06-16 15:12:18,568 - INFO - Product update requested by admin_id=1 for product_id=8
+2025-06-16 15:12:18,577 - INFO - Product updated successfully: product_id=8 by admin_id=1
+2025-06-16 15:12:36,852 - INFO - Product update requested by admin_id=1 for product_id=8
+2025-06-16 15:12:36,863 - INFO - Product updated successfully: product_id=8 by admin_id=1
+2025-06-16 15:14:25,498 - INFO - Product delete requested by admin_id=1 for product_id=8
+2025-06-16 15:14:25,512 - INFO - Product deleted successfully: product_id=8 by admin_id=1

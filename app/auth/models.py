@@ -2,6 +2,10 @@ from sqlalchemy import Column, Integer, String, Boolean, Enum, ForeignKey, DateT
 from app.core.database import Base
 import enum
 from sqlalchemy.orm import relationship
+from app.cart.models import CartItem
+from app.orders.models import Order
+from app.products.models import Product
+ 
 
 class RoleEnum(str, enum.Enum):
     admin = "admin"
@@ -16,8 +20,10 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     role = Column(Enum(RoleEnum), default=RoleEnum.user)
 
+    products = relationship("Product", back_populates="creator", cascade="all, delete")
     cart_items = relationship("CartItem", back_populates="user", cascade="all, delete")
     orders = relationship("Order", back_populates="user", cascade="all, delete")
+   
 
 
 class PasswordResetToken(Base):
