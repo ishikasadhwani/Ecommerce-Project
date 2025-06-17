@@ -12,7 +12,7 @@ from app.core.config import logger
 router = APIRouter(tags=["Orders"])
 
 
-@router.get("/orders", response_model=Union[List[schemas.OrderOutHistory], MessageResponse])
+@router.get("/orders/history", response_model=Union[List[schemas.OrderOutHistory], MessageResponse])
 def get_user_orders(
     db: Session = Depends(get_db),
     user: User = Depends(get_user_only)

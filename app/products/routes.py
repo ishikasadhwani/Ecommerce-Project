@@ -14,7 +14,7 @@ public_router = APIRouter(prefix="/products", tags=["Public - Products"])
 
 # ------------------ ADMIN ROUTES ------------------
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=Dict[str, str])
+@router.post("/add", status_code=status.HTTP_201_CREATED, response_model=Dict[str, str])
 def create_product(
     data: schemas.ProductCreate,
     db: Session = Depends(get_db),
@@ -28,7 +28,7 @@ def create_product(
     return {"message": "Product created successfully."}
 
 
-@router.get("/", response_model=List[schemas.ProductOut])
+@router.get("/all", response_model=List[schemas.ProductOut])
 def list_products(
     db: Session = Depends(get_db),
     admin=Depends(get_admin_user),
@@ -58,7 +58,7 @@ def get_product(
     return product
 
 
-@router.put("/{product_id}", response_model=schemas.ProductUpdateResponse)
+@router.put("/update/{product_id}", response_model=schemas.ProductUpdateResponse)
 def update_product(
     product_id: int,
     data: schemas.ProductUpdate,
@@ -76,7 +76,7 @@ def update_product(
     }
 
 
-@router.delete("/{product_id}", response_model=Dict[str, str])
+@router.delete("/delete/{product_id}", response_model=Dict[str, str])
 def delete_product(
     product_id: int,
     db: Session = Depends(get_db),
@@ -115,7 +115,7 @@ def public_product_list(
 @public_router.get("/search", response_model=Union[List[schemas.BasicProductOut], schemas.MessageResponse])
 def search_products(keyword: str, db: Session = Depends(get_db)) -> Union[List[schemas.BasicProductOut], Dict[str, str]]:
     """
-    Public: Search products by name or description.
+    Public: Search products by name or description or category.
     """
     logger.info(f"Public search for keyword='{keyword}'")
     products = crud.search_products(db, keyword)
