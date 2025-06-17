@@ -341,3 +341,7 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 19:49:18,245 - INFO - Public search for keyword='mixer'
 2025-06-17 19:50:20,381 - INFO - Public search for keyword='mobile'
 2025-06-17 21:11:29,014 - INFO - Public search for keyword='mobile'
+2025-06-17 23:03:13,601 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-17 23:03:19,495 - INFO - Password reset token created
+2025-06-17 23:04:45,641 - INFO - Password reset attempt
+2025-06-17 23:04:46,563 - INFO - Password reset successful for user ishikasadhwani3@gmail.com

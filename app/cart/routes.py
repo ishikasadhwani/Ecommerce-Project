@@ -13,7 +13,7 @@ from app.core.config import logger
 router = APIRouter(prefix="/cart", tags=["Cart"])
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=Dict[str, str])
+@router.post("/addToCart", status_code=status.HTTP_201_CREATED, response_model=Dict[str, str])
 def add_to_cart(
     item: schemas.AddToCartSchema,
     db: Session = Depends(get_db),
@@ -27,7 +27,7 @@ def add_to_cart(
     return {"message": message}
 
 
-@router.get("/", response_model=Union[List[CartItemOut], MessageResponse])
+@router.get("/getCartItems", response_model=Union[List[CartItemOut], MessageResponse])
 def get_cart_items(
     db: Session = Depends(get_db),
     user: User = Depends(get_user_only)
@@ -42,7 +42,7 @@ def get_cart_items(
     return items
 
 
-@router.put("/{product_id}", status_code=status.HTTP_200_OK, response_model=Dict[str, str])
+@router.put("/update/{product_id}", status_code=status.HTTP_200_OK, response_model=Dict[str, str])
 def update_cart_item_quantity(
     product_id: int,
     data: schemas.UpdateCartItemSchema,
@@ -57,7 +57,7 @@ def update_cart_item_quantity(
     return {"message": message}
 
 
-@router.delete("/{product_id}", status_code=status.HTTP_200_OK, response_model=Dict[str, str])
+@router.delete("/delete/{product_id}", status_code=status.HTTP_200_OK, response_model=Dict[str, str])
 def remove_cart_item(
     product_id: int,
     db: Session = Depends(get_db),
