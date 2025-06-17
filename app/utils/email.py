@@ -1,3 +1,4 @@
+# Import necessary libraries and modules
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -5,6 +6,7 @@ import os
 from dotenv import load_dotenv
 from fastapi import HTTPException, status
 
+# load environment variables from .env file
 load_dotenv()
 
 EMAIL_HOST = os.getenv("EMAIL_HOST")
@@ -12,7 +14,21 @@ EMAIL_PORT = int(os.getenv("EMAIL_PORT"))
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
 
+
 def send_reset_email(to_email: str, token: str):
+    """
+    Send a password reset email to the specified user.
+
+    Args:
+        to_email (str): The recipient's email address.
+        token (str): The password reset token to include in the email.
+
+    Raises:
+        HTTPException: If the email fails to send, raises a 500 Internal Server Error.
+
+    The email contains instructions and a token for resetting the user's password.
+    """
+    
     subject = "Password Reset Request For Your Ecommerce Account"
     body = f"""
     Hi,
@@ -41,6 +57,7 @@ def send_reset_email(to_email: str, token: str):
             server.login(EMAIL_USER, EMAIL_PASS)
             server.send_message(message)
         print(f"Reset email sent to {to_email}")
+
     except Exception as e:
         print("Failed to send email:", e)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

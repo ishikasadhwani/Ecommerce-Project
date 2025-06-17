@@ -129,7 +129,7 @@ def get_user_only(user: User = Depends(get_current_user)) -> User:
     if user.role != "user":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Only users can access cart functionalities."
+            detail="Only users can access this functionality."
         )
     return user
 
