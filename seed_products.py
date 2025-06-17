@@ -20,7 +20,7 @@ def seed_products():
             stock=25,
             description="Latest Apple flagship with A17 chip",
             image_url="https://example.com/images/iphone15.jpg",
-            created_by=admin.id  # ✅ associate with admin
+            created_by=admin.id  
         ),
         Product(
             name="MacBook Air M3",
@@ -49,7 +49,6 @@ def seed_products():
             image_url="https://example.com/images/sony-headphones.jpg",
             created_by=admin.id
         ),
-        # Add more products similarly...
     ]
 
     try:
@@ -66,13 +65,4 @@ if __name__ == "__main__":
     seed_products()
 
 
-# from app.core.database import SessionLocal
-# from app.products.models import Product
-# from app.auth.models import User
-# from sqlalchemy.exc import IntegrityError
-
-# def seed_products():
-#     db = SessionLocal()
-
-#     # ✅ Get an admin user (make sure at least one exists)
     

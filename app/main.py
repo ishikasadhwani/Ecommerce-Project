@@ -1,6 +1,6 @@
+# Import necessary modules and packages
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse 
 from app.auth.models import User
 from app.auth.routes import router as auth_router
 from app.products.routes import router as product_router
@@ -16,10 +16,12 @@ from app.exceptions.handler import (
     global_exception_handler,
 )
 
+# Creating app instance
 app = FastAPI()
 
 Base.metadata.create_all(bind=engine)
 
+# Include routers for different functionalities
 app.include_router(auth_router)
 app.include_router(product_router)
 app.include_router(public_router)
@@ -27,11 +29,12 @@ app.include_router(cart_router)
 app.include_router(orders_router)
 app.include_router(checkout_router)
 
+# Custom exception handlers
 app.add_exception_handler(RequestValidationError, handler=custom_validation_exception_handler)
 app.add_exception_handler(HTTPException, handler=custom_http_exception_handler)
 app.add_exception_handler(Exception, handler= global_exception_handler)
 
-
+# Root endpoint
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the E-commerce Backend System!"}
