@@ -1,0 +1,284 @@
+2025-06-11 23:10:53,508 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-11 23:10:53,557 - WARNING - (trapped) error reading bcrypt version
+Traceback (most recent call last):
+  File "C:\Users\Admin\Desktop\EcommerceProject\Ecommerce-Project\venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 620, in _load_backend_mixin
+    version = _bcrypt.__about__.__version__
+              ^^^^^^^^^^^^^^^^^
+AttributeError: module 'bcrypt' has no attribute '__about__'
+2025-06-11 23:10:54,514 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-11 23:18:08,251 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-11 23:18:08,757 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-11 23:48:02,751 - INFO - Password reset attempt with token: 47e4e09c-6205-4f38-a369-288408ea9ae3
+2025-06-11 23:48:03,669 - INFO - Password reset successful for user_id=1, email=ishikasadhwani3@gmail.com
+2025-06-12 00:20:12,988 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-12 00:20:18,487 - INFO - Password reset token created for user_id=1, email=ishikasadhwani3@gmail.com
+2025-06-12 00:20:39,096 - INFO - Password reset attempt with token: def93048-039e-412d-9ac5-256d6677d79a
+2025-06-12 00:20:40,016 - INFO - Password reset successful for user ishikasadhwani3@gmail.com
+2025-06-12 00:47:58,847 - INFO - Order history requested by user_id=2
+2025-06-12 00:47:58,855 - INFO - Found 1 orders for user_id=2
+2025-06-12 18:46:33,382 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-12 18:46:34,351 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-12 18:49:56,230 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-12 18:49:57,435 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-12 18:50:13,861 - INFO - Login attempt for email: vanshika0@gmail.com
+2025-06-12 18:50:13,869 - WARNING - Login failed: Invalid Email - vanshika0@gmail.com
+2025-06-12 18:50:47,535 - INFO - Login attempt for email: vanshika06@gmail.co
+2025-06-12 18:50:47,536 - WARNING - Login failed: Invalid Email - vanshika06@gmail.co
+2025-06-12 20:06:54,595 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-12 20:07:53,987 - INFO - Signup attempt for email: kajal@g.com
+2025-06-12 20:21:15,265 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-13 15:46:45,377 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-13 15:46:46,017 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-13 15:48:07,987 - INFO - Login attempt for email: vanshikasadhwani3@gmail.com
+2025-06-13 15:48:07,987 - WARNING - Login failed: Invalid Email - vanshikasadhwani3@gmail.com
+2025-06-13 15:51:06,638 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 15:51:07,694 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 16:18:18,456 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 16:18:19,084 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 16:23:31,994 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:26:33,769 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:35:21,624 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:37:28,071 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 16:37:28,092 - WARNING - Product delete failed: product_id=1 is referenced in order_items
+2025-06-13 17:13:52,761 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 17:13:53,745 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 17:14:17,278 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 17:14:17,294 - WARNING - Product delete failed: product_id=1 is referenced in order_items
+2025-06-13 17:14:59,018 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 17:37:43,323 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-13 17:37:43,706 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-13 17:38:18,087 - INFO - Add to cart requested by user_id=2 for product_id=3 (qty=2)
+2025-06-13 17:38:18,097 - INFO - Added new product_id=3 to cart for user_id=2
+2025-06-13 17:38:36,127 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:38:36,139 - INFO - Order created (order_id=1) for user_id=2
+2025-06-13 17:38:36,154 - INFO - Checkout successful for user_id=2, order_id=1
+2025-06-13 17:40:24,268 - INFO - Add to cart requested by user_id=2 for product_id=4 (qty=1)
+2025-06-13 17:40:24,280 - INFO - Added new product_id=4 to cart for user_id=2
+2025-06-13 17:40:30,000 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:40:30,006 - INFO - Order created (order_id=2) for user_id=2
+2025-06-13 17:40:30,024 - INFO - Checkout successful for user_id=2, order_id=2
+2025-06-13 17:41:09,236 - INFO - Product delete requested by admin_id=1 for product_id=4
+2025-06-13 17:41:09,245 - INFO - Product deleted successfully: product_id=4 by admin_id=1
+2025-06-13 17:41:31,334 - INFO - Order detail requested for order_id=1 by user_id=2
+2025-06-13 17:41:31,344 - INFO - Order detail returned for order_id=1 by user_id=2
+2025-06-13 17:41:45,728 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-13 17:41:45,730 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-13 17:43:04,695 - INFO - Get cart items requested by user_id=2
+2025-06-13 17:43:04,696 - INFO - Cart empty for user_id=2
+2025-06-13 17:43:30,568 - INFO - Add to cart requested by user_id=2 for product_id=6 (qty=1)
+2025-06-13 17:43:30,570 - INFO - Added new product_id=6 to cart for user_id=2
+2025-06-13 17:43:37,981 - INFO - Add to cart requested by user_id=2 for product_id=1 (qty=1)
+2025-06-13 17:43:37,984 - INFO - Added new product_id=1 to cart for user_id=2
+2025-06-13 17:43:44,171 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:43:44,175 - INFO - Order created (order_id=3) for user_id=2
+2025-06-13 17:43:44,187 - INFO - Checkout successful for user_id=2, order_id=3
+2025-06-13 17:44:59,449 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-13 17:44:59,832 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-13 17:45:15,580 - INFO - Product delete requested by admin_id=1 for product_id=1
+2025-06-13 17:45:15,586 - INFO - Product deleted successfully: product_id=1 by admin_id=1
+2025-06-13 17:45:49,500 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-13 17:45:49,846 - INFO - Login successful for email: vanshika06@gmail.com
+2025-06-13 17:46:18,545 - INFO - Order history requested by user_id=2
+2025-06-13 17:46:18,547 - INFO - Found 3 orders for user_id=2
+2025-06-13 17:52:16,763 - INFO - Add to cart requested by user_id=2 for product_id=5 (qty=1)
+2025-06-13 17:52:16,766 - INFO - Added new product_id=5 to cart for user_id=2
+2025-06-13 17:52:25,558 - INFO - Add to cart requested by user_id=2 for product_id=7 (qty=1)
+2025-06-13 17:52:25,560 - INFO - Added new product_id=7 to cart for user_id=2
+2025-06-13 17:52:33,821 - INFO - Checkout initiated by user_id=2
+2025-06-13 17:52:33,825 - INFO - Order created (order_id=4) for user_id=2
+2025-06-13 17:52:33,836 - INFO - Checkout successful for user_id=2, order_id=4
+2025-06-13 17:53:25,069 - INFO - Order detail requested for order_id=4 by user_id=2
+2025-06-13 17:53:25,072 - INFO - Order detail returned for order_id=4 by user_id=2
+2025-06-13 17:53:58,936 - INFO - Order history requested by user_id=2
+2025-06-13 17:53:58,937 - INFO - Found 4 orders for user_id=2
+2025-06-16 15:09:20,779 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 15:09:21,187 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-16 15:10:44,534 - INFO - Product creation requested by admin_id=1 for product 'Samsung Galaxy S22 Ultra'
+2025-06-16 15:10:44,546 - INFO - Product created successfully: id=8, name=Samsung Galaxy S22 Ultra
+2025-06-16 15:11:38,093 - INFO - Product update requested by admin_id=1 for product_id=2
+2025-06-16 15:11:38,095 - WARNING - Product update failed: product_id=2 not found by admin_id=1
+2025-06-16 15:12:18,568 - INFO - Product update requested by admin_id=1 for product_id=8
+2025-06-16 15:12:18,577 - INFO - Product updated successfully: product_id=8 by admin_id=1
+2025-06-16 15:12:36,852 - INFO - Product update requested by admin_id=1 for product_id=8
+2025-06-16 15:12:36,863 - INFO - Product updated successfully: product_id=8 by admin_id=1
+2025-06-16 15:14:25,498 - INFO - Product delete requested by admin_id=1 for product_id=8
+2025-06-16 15:14:25,512 - INFO - Product deleted successfully: product_id=8 by admin_id=1
+2025-06-16 18:55:43,324 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 18:55:44,264 - WARNING - Login failed: Invalid Password for email - ishikasadhwani3@gmail.com
+2025-06-16 19:13:31,412 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 19:13:32,408 - WARNING - Login failed: Invalid Password for email - ishikasadhwani3@gmail.com
+2025-06-16 19:13:39,377 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 19:13:40,170 - INFO - Login successful for email: ishikasadhwani3@gmail.com
+2025-06-16 19:32:41,390 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 19:32:42,444 - INFO - Login successful
+2025-06-16 20:08:49,620 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-16 20:08:50,573 - INFO - User created successfully: kajal@gmail.com
+2025-06-16 20:09:05,316 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-16 20:09:06,243 - INFO - Login successful
+2025-06-16 20:09:17,139 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-16 20:09:22,074 - INFO - Password reset token created
+2025-06-16 20:09:55,046 - INFO - Password reset attempt
+2025-06-16 20:09:55,052 - WARNING - Invalid or expired token
+2025-06-16 20:10:31,029 - INFO - Password reset attempt
+2025-06-16 20:10:31,751 - INFO - Password reset successful for user ishikasadhwani3@gmail.com
+2025-06-16 20:42:29,511 - INFO - Login attempt for email: kajal@gmail.com
+2025-06-16 20:42:29,974 - INFO - Login successful
+2025-06-16 20:42:54,732 - INFO - Order history requested by user_id=3
+2025-06-16 20:42:54,742 - INFO - No previous orders found for user_id=3
+2025-06-16 20:44:54,166 - INFO - Order history requested by user_id=3
+2025-06-16 20:44:54,178 - INFO - No previous orders found for user_id=3
+2025-06-16 20:45:15,786 - INFO - Order history requested by user_id=3
+2025-06-16 20:45:15,786 - INFO - No previous orders found for user_id=3
+2025-06-16 20:50:50,837 - INFO - Order history requested by user_id=3
+2025-06-16 20:50:50,852 - INFO - No previous orders found for user_id=3
+2025-06-16 20:52:19,290 - INFO - Order history requested by user_id=3
+2025-06-16 20:52:19,303 - INFO - No previous orders found for user_id=3
+2025-06-16 20:54:18,834 - INFO - Order detail requested for order_id=4 by user_id=3
+2025-06-16 20:54:18,859 - WARNING - Order not found: order_id=4 for user_id=3
+2025-06-16 20:54:29,472 - INFO - Order detail requested for order_id=10 by user_id=3
+2025-06-16 20:54:29,476 - WARNING - Order not found: order_id=10 for user_id=3
+2025-06-16 20:59:22,006 - INFO - Order history requested by user_id=3
+2025-06-16 20:59:22,022 - INFO - No previous orders found for user_id=3
+2025-06-16 20:59:31,741 - INFO - Order history requested by user_id=3
+2025-06-16 20:59:31,749 - INFO - No previous orders found for user_id=3
+2025-06-16 21:02:40,148 - INFO - Order detail requested for order_id=10 by user_id=3
+2025-06-16 21:02:40,161 - WARNING - Order not found: order_id=10 for user_id=3
+2025-06-16 21:13:04,262 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 21:13:05,296 - INFO - Login successful
+2025-06-16 21:13:22,585 - INFO - Order history requested by user_id=2
+2025-06-16 21:13:22,597 - INFO - Found 4 orders for user_id=2
+2025-06-16 21:18:08,159 - INFO - Add to cart requested by user_id=2 for product_id=9 (qty=1)
+2025-06-16 21:18:08,177 - INFO - Added new product_id=9 to cart for user_id=2
+2025-06-16 21:18:28,467 - INFO - Checkout initiated by user_id=2
+2025-06-16 21:18:28,482 - INFO - Order created (order_id=5) for user_id=2
+2025-06-16 21:18:28,490 - INFO - Checkout successful for user_id=2, order_id=5
+2025-06-16 21:18:54,334 - INFO - Order history requested by user_id=2
+2025-06-16 21:18:54,342 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:19:46,104 - INFO - Order detail requested for order_id=5 by user_id=2
+2025-06-16 21:19:46,112 - INFO - Order detail returned for order_id=5 by user_id=2
+2025-06-16 21:31:11,392 - INFO - Forgot password requested for email: ishikasadhwani3@gmail.com
+2025-06-16 21:31:18,198 - INFO - Password reset token created
+2025-06-16 21:31:18,304 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 21:31:18,669 - INFO - Login successful
+2025-06-16 21:31:18,745 - INFO - Password reset attempt
+2025-06-16 21:31:18,750 - WARNING - Invalid or expired token
+2025-06-16 21:31:18,823 - INFO - Signup attempt for email: kajal@gmail.com
+2025-06-16 21:31:18,831 - WARNING - Signup failed: Email already registered - kajal@gmail.com
+2025-06-16 21:36:09,433 - INFO - Order history requested by user_id=2
+2025-06-16 21:36:09,443 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:36:09,533 - INFO - Order history requested by user_id=2
+2025-06-16 21:36:09,533 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:37:00,434 - INFO - Order history requested by user_id=2
+2025-06-16 21:37:00,441 - INFO - Found 5 orders for user_id=2
+2025-06-16 21:37:15,596 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-16 21:37:15,617 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-16 21:39:53,307 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-16 21:39:53,354 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-16 21:41:04,445 - INFO - Order detail requested for order_id=5 by user_id=2
+2025-06-16 21:41:04,471 - INFO - Order detail returned for order_id=5 by user_id=2
+2025-06-16 21:41:32,642 - INFO - Order detail requested for order_id=2 by user_id=2
+2025-06-16 21:41:32,647 - INFO - Order detail returned for order_id=2 by user_id=2
+2025-06-16 21:55:22,438 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 21:55:23,464 - INFO - Login successful
+2025-06-16 21:55:51,741 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 21:55:51,758 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 21:56:02,139 - INFO - Checkout initiated by user_id=2
+2025-06-16 21:56:02,151 - INFO - Order created (order_id=6) for user_id=2
+2025-06-16 21:56:02,177 - INFO - Checkout successful for user_id=2, order_id=6
+2025-06-16 21:56:54,607 - INFO - Order detail requested for order_id=6 by user_id=2
+2025-06-16 21:56:54,618 - INFO - Order detail returned for order_id=6 by user_id=2
+2025-06-16 22:03:35,953 - INFO - Add to cart requested by user_id=2 for product_id=11 (qty=1)
+2025-06-16 22:03:35,979 - INFO - Added new product_id=11 to cart for user_id=2
+2025-06-16 22:03:45,724 - INFO - Checkout initiated by user_id=2
+2025-06-16 22:03:45,729 - INFO - Order created (order_id=7) for user_id=2
+2025-06-16 22:03:45,754 - INFO - Checkout successful for user_id=2, order_id=7
+2025-06-16 22:04:02,206 - INFO - Order history requested by user_id=2
+2025-06-16 22:04:02,206 - INFO - Found 7 orders for user_id=2
+2025-06-16 22:04:16,927 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:04:16,948 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:04:56,023 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:04:56,032 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:11:11,540 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:11:11,588 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:37:34,828 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 22:37:35,785 - INFO - Login successful
+2025-06-16 22:38:15,621 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:38:15,645 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 22:39:29,379 - INFO - Order detail requested for order_id=6 by user_id=2
+2025-06-16 22:39:29,379 - INFO - Order detail returned for order_id=6 by user_id=2
+2025-06-16 22:40:18,475 - INFO - Order detail requested for order_id=6 by user_id=2
+2025-06-16 22:40:18,497 - INFO - Order detail returned for order_id=6 by user_id=2
+2025-06-16 22:40:26,030 - INFO - Order detail requested for order_id=7 by user_id=2
+2025-06-16 22:40:26,030 - INFO - Order detail returned for order_id=7 by user_id=2
+2025-06-16 23:01:30,697 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 23:01:31,647 - INFO - Login successful
+2025-06-16 23:02:18,347 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 23:02:19,097 - INFO - Login successful
+2025-06-16 23:02:45,495 - INFO - Add to cart requested by user_id=2 for product_id=11 (qty=1)
+2025-06-16 23:02:45,503 - WARNING - Add to cart failed: Product not found (product_id=11) by user_id=2
+2025-06-16 23:03:05,623 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 23:03:05,639 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 23:03:11,327 - INFO - Add to cart requested by user_id=2 for product_id=12 (qty=1)
+2025-06-16 23:03:11,333 - INFO - Added new product_id=12 to cart for user_id=2
+2025-06-16 23:03:27,099 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:03:27,106 - INFO - Order created (order_id=8) for user_id=2
+2025-06-16 23:03:27,139 - INFO - Checkout successful for user_id=2, order_id=8
+2025-06-16 23:34:44,477 - INFO - Login attempt for email: vanshika06@gmail.com
+2025-06-16 23:34:44,866 - INFO - Login successful
+2025-06-16 23:35:13,595 - INFO - Add to cart requested by user_id=2 for product_id=12 (qty=1)
+2025-06-16 23:35:13,605 - INFO - Added new product_id=12 to cart for user_id=2
+2025-06-16 23:35:27,215 - INFO - Get cart items requested by user_id=2
+2025-06-16 23:35:46,537 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:35:46,542 - INFO - Order created (order_id=9) for user_id=2
+2025-06-16 23:35:46,560 - INFO - Checkout successful for user_id=2, order_id=9
+2025-06-16 23:37:17,279 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:37:17,283 - WARNING - Checkout failed: Cart empty for user_id=2
+2025-06-16 23:37:32,818 - INFO - Order history requested by user_id=2
+2025-06-16 23:37:32,823 - INFO - Found 1 orders for user_id=2
+2025-06-16 23:37:47,045 - INFO - Order detail requested for order_id=9 by user_id=2
+2025-06-16 23:37:47,058 - INFO - Order detail returned for order_id=9 by user_id=2
+2025-06-16 23:38:16,153 - INFO - Add to cart requested by user_id=2 for product_id=12 (qty=1)
+2025-06-16 23:38:16,158 - INFO - Added new product_id=12 to cart for user_id=2
+2025-06-16 23:38:21,626 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 23:38:21,629 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 23:38:28,425 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:38:28,431 - INFO - Order created (order_id=10) for user_id=2
+2025-06-16 23:38:28,449 - INFO - Checkout successful for user_id=2, order_id=10
+2025-06-16 23:38:54,930 - INFO - Order detail requested for order_id=10 by user_id=2
+2025-06-16 23:38:54,933 - INFO - Order detail returned for order_id=10 by user_id=2
+2025-06-16 23:46:06,352 - INFO - Add to cart requested by user_id=2 for product_id=10 (qty=1)
+2025-06-16 23:46:06,364 - INFO - Added new product_id=10 to cart for user_id=2
+2025-06-16 23:46:14,054 - INFO - Checkout initiated by user_id=2
+2025-06-16 23:46:14,060 - INFO - Order created (order_id=11) for user_id=2
+2025-06-16 23:46:14,076 - INFO - Checkout successful for user_id=2, order_id=11
+2025-06-17 00:41:17,385 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-17 00:41:17,827 - INFO - Login successful
+2025-06-17 00:42:55,779 - INFO - Creating product 'Samsung Galaxy M35' by admin_id=1
+2025-06-17 00:42:55,805 - INFO - Product created successfully: id=13, name=Samsung Galaxy M35
+2025-06-17 00:43:56,569 - INFO - Update request for product_id=8 by admin_id=1
+2025-06-17 00:44:20,007 - INFO - Update request for product_id=13 by admin_id=1
+2025-06-17 00:44:43,598 - INFO - Product list requested by admin_id=1
+2025-06-17 00:45:14,005 - INFO - Product detail requested by admin_id=1 for product_id=10
+2025-06-17 00:52:25,698 - INFO - Public product list requested
+2025-06-17 00:53:16,605 - INFO - Public product list requested
+2025-06-17 00:53:46,564 - INFO - Public product list requested
+2025-06-17 00:55:26,622 - INFO - Public product detail requested for id=10
+2025-06-17 00:55:58,793 - INFO - Public search for keyword='laptop'
+2025-06-17 00:56:10,181 - INFO - Public search for keyword='fridge'
+2025-06-17 00:57:42,169 - INFO - Public product detail requested for id=10
+2025-06-17 01:05:49,371 - INFO - Login attempt for email: kajal@gmail.com
+2025-06-17 01:05:49,860 - INFO - Login successful
+2025-06-17 01:06:19,078 - INFO - User 3 adding product 10 (qty=1) to cart.
+2025-06-17 01:06:29,783 - INFO - Fetching cart items for user_id=3
+2025-06-17 01:07:01,020 - INFO - User 3 updating quantity of product 10 to 2
+2025-06-17 01:08:21,556 - INFO - User 3 removing product 3 from cart.
+2025-06-17 01:08:28,415 - INFO - User 3 removing product 10 from cart.
+2025-06-17 01:18:00,432 - INFO - User 3 adding product 10 (qty=1) to cart.
+2025-06-17 01:21:03,223 - INFO - Fetching cart items for user_id=3
+2025-06-17 01:22:26,059 - INFO - Checkout successful for user_id=3, order_id=12
+2025-06-17 01:32:54,887 - INFO - Login attempt for email: kajal@gmail.com
+2025-06-17 01:32:55,307 - INFO - Login successful
+2025-06-17 01:33:19,806 - INFO - Order history requested by user_id=3
+2025-06-17 01:33:19,810 - INFO - Found 1 orders for user_id=3
+2025-06-17 01:33:34,174 - INFO - Order detail requested for order_id=12 by user_id=3
+2025-06-17 01:33:34,183 - INFO - Order detail returned for order_id=12 by user_id=3
