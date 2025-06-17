@@ -282,3 +282,19 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 01:33:19,810 - INFO - Found 1 orders for user_id=3
 2025-06-17 01:33:34,174 - INFO - Order detail requested for order_id=12 by user_id=3
 2025-06-17 01:33:34,183 - INFO - Order detail returned for order_id=12 by user_id=3
+2025-06-17 16:23:00,048 - INFO - Signup attempt for email: nikhil@gmail.com
+2025-06-17 16:23:00,563 - INFO - User created successfully: nikhil@gmail.com
+2025-06-17 16:48:12,188 - INFO - Signup attempt for email: nancy@gmail.com
+2025-06-17 16:48:23,351 - INFO - Signup attempt for email: nancy@gmail.com
+2025-06-17 16:48:39,560 - INFO - Signup attempt for email: nancy@gmail.com
+2025-06-17 16:48:39,977 - INFO - User created successfully: nancy@gmail.com
+2025-06-17 16:54:48,138 - INFO - Signup attempt for email: nancy@gmail.com
+2025-06-17 16:54:48,158 - WARNING - Signup failed: Email already registered - nancy@gmail.com
+2025-06-17 16:58:56,838 - INFO - Signup attempt for email: nancy@gmail.com
+2025-06-17 16:58:56,858 - WARNING - Signup failed: Email already registered - nancy@gmail.com
+2025-06-17 16:59:35,489 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-17 16:59:35,871 - INFO - Login successful
+2025-06-17 17:00:06,986 - INFO - Creating product 'Samsung Galaxy M35' by admin_id=1
+2025-06-17 17:09:14,959 - INFO - Creating product 'Samsung Galaxy M35' by admin_id=1
+2025-06-17 17:16:20,483 - INFO - Creating product 'Samsung Galaxy M35' by admin_id=1
+2025-06-17 17:16:20,483 - ERROR - Conflict: Product with name 'Samsung Galaxy M35' already exists.

@@ -1,6 +1,7 @@
 # Import necessary modules and packages
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
+from sqlalchemy.exc import IntegrityError
 from app.auth.models import User
 from app.auth.routes import router as auth_router
 from app.products.routes import router as product_router
@@ -14,6 +15,7 @@ from app.exceptions.handler import (
     custom_http_exception_handler,
     custom_validation_exception_handler,
     global_exception_handler,
+    integrity_error_handler,
 )
 
 # Creating app instance
@@ -33,6 +35,7 @@ app.include_router(checkout_router)
 app.add_exception_handler(RequestValidationError, handler=custom_validation_exception_handler)
 app.add_exception_handler(HTTPException, handler=custom_http_exception_handler)
 app.add_exception_handler(Exception, handler= global_exception_handler)
+app.add_exception_handler(IntegrityError, handler= integrity_error_handler)
 
 # Root endpoint
 @app.get("/")

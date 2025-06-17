@@ -48,7 +48,7 @@ def seed_products():
             stock=15,
             image_url="https://example.com/images/sony-headphones.jpg",
             created_by=admin.id
-        ),
+        ), 
     ]
 
     try:

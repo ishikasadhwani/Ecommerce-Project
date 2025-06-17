@@ -1,6 +1,6 @@
 # Import necessary modules and classes
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, validator
 from enum import Enum
 
 # Schema for user roles
@@ -14,6 +14,13 @@ class UserSignup(BaseModel):
     email: EmailStr
     password: str
     role: RoleEnum
+
+    
+    @validator("name")
+    def not_empty(cls, v ):
+        if v.strip()=="":
+            raise ValueError("Name cannot be empty")
+        return v
 
 # Schema for user login
 class UserLogin(BaseModel):
@@ -35,7 +42,7 @@ class Token(BaseModel):
     access_token: str
     token_type: str
 
-# Schema for token data
+# Schema for decode token data
 class TokenData(BaseModel):
     id: Optional[int]=None
 

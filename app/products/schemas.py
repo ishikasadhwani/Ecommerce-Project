@@ -5,7 +5,7 @@ class ProductCreate(BaseModel):
     name: str
     description: Optional[str]
     price: condecimal(gt=0)
-    stock: conint(ge=0)
+    stock: conint(gt=0)
     category: str
     image_url: Optional[HttpUrl]
 

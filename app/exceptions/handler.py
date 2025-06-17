@@ -1,6 +1,8 @@
 from fastapi import Request, status, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from sqlalchemy.exc import IntegrityError
+from app.core.config import logger
 
 
 async def custom_http_exception_handler(request: Request, exc: HTTPException) -> JSONResponse:
@@ -43,8 +45,18 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
                     "code": status.HTTP_400_BAD_REQUEST,
                 },
             )
+        
+        elif "cannot be empty" in msg:
+            return JSONResponse(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                content={
+                    "error": True,
+                    "message": "Please enter name. Name cannot be empty.",
+                    "code": status.HTTP_400_BAD_REQUEST,
+                },
+            )
 
-        if "email" in loc:
+        elif "email" in loc:
             return JSONResponse(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content={
@@ -54,7 +66,7 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
                 },
             )
     
-    # Fallback for all other validation errors
+    # # Fallback for all other validation errors
     return JSONResponse(
         status_code=status.HTTP_400_BAD_REQUEST,
         content={
@@ -64,6 +76,20 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
         },
     )
 
+async def integrity_error_handler(request: Request, exc: IntegrityError):
+    """
+    Handle SQLAlchemy IntegrityError globally (e.g., duplicate key violations).
+    """
+    logger.error(f"IntegrityError at {request.url}: {exc}")
+    
+    return JSONResponse(
+        status_code=status.HTTP_409_CONFLICT,
+        content={
+            "error": True,
+            "message": "Conflict: Resource already exists or violates constraints.",
+            "code": status.HTTP_409_CONFLICT
+        },
+    )
 
 async def global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
     """
