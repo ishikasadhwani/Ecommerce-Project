@@ -13,7 +13,7 @@ EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
 
 def send_reset_email(to_email: str, token: str):
-    subject = "Password Reset Request"
+    subject = "Password Reset Request For Your Ecommerce Account"
     body = f"""
     Hi,
 
@@ -21,7 +21,7 @@ def send_reset_email(to_email: str, token: str):
 
     Token: {token}
 
-    Note: This token is valid for 30 minutes.
+    Note: This token is valid for 5 minutes.
 
     If you did not request this, you can safely ignore this email.
 

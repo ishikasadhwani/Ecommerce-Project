@@ -77,7 +77,7 @@ def forgot_password(data: schemas.ForgotPassword, db: Session) -> dict:
     reset_token = models.PasswordResetToken(
         user_id=user.id,
         token=str(uuid.uuid4()),
-        expires_at=datetime.utcnow() + timedelta(minutes=30)
+        expires_at=datetime.utcnow() + timedelta(minutes=5)
     )
 
     db.add(reset_token)
