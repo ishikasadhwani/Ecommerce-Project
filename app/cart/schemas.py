@@ -15,7 +15,7 @@ class CartItemOut(BaseModel):
     quantity: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MessageResponse(BaseModel):
     message: str

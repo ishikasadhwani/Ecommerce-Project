@@ -65,6 +65,27 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
                     "code": status.HTTP_400_BAD_REQUEST,
                 },
             )
+        
+        elif "price" in loc:
+            return JSONResponse(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                content={
+                    "error": True,
+                    "message": "Price must be greater than 0",
+                    "code": status.HTTP_400_BAD_REQUEST,
+                },
+            )
+        
+        elif "stock" in loc:
+            return JSONResponse(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                content={
+                    "error": True,
+                    "message": "Stock must be greater than 0",
+                    "code": status.HTTP_400_BAD_REQUEST,
+                },
+            )
+
     
     # # Fallback for all other validation errors
     return JSONResponse(

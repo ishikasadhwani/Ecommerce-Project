@@ -19,7 +19,7 @@ class OrderItemOutHistory(BaseModel):
     quantity: int
     price_at_purchase: float
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderItemOutWithSubtotal(OrderItemOutHistory):
     """
@@ -29,7 +29,7 @@ class OrderItemOutWithSubtotal(OrderItemOutHistory):
     subtotal: Optional[float] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderItemOutCheckout(BaseModel):
     """
@@ -40,7 +40,7 @@ class OrderItemOutCheckout(BaseModel):
     price_at_purchase: float
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderOutHistory(BaseModel):
     """
@@ -52,7 +52,7 @@ class OrderOutHistory(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderOutCheckout(OrderOutHistory):
     """
@@ -61,7 +61,7 @@ class OrderOutCheckout(OrderOutHistory):
     items: List[OrderItemOutCheckout]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class OrderOut(BaseModel):
@@ -75,14 +75,14 @@ class OrderOut(BaseModel):
     items: List[OrderItemOutWithSubtotal]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class OrderResponseWithMessage(BaseModel):
     message: str
     order: OrderOutCheckout
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MessageResponse(BaseModel):
     message: str
