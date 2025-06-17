@@ -92,7 +92,7 @@ def delete_product(
 
 # ------------------ PUBLIC ROUTES ------------------
 
-@public_router.get("/", response_model=Union[List[schemas.ProductOut], schemas.MessageResponse])
+@public_router.get("/", response_model=Union[List[schemas.BasicProductOut], schemas.MessageResponse])
 def public_product_list(
     db: Session = Depends(get_db),
     category: Optional[str] = None,
@@ -101,7 +101,7 @@ def public_product_list(
     sort_by: Optional[str] = Query("price", enum=["price", "name", "stock"]),
     page: int = 1,
     page_size: int = 10
-) -> Union[List[schemas.ProductOut], Dict[str, str]]:
+) -> Union[List[schemas.BasicProductOut], Dict[str, str]]:
     """
     Public: Filter and list products based on category, price range, and sorting.
     """
@@ -112,8 +112,8 @@ def public_product_list(
     return products
 
 
-@public_router.get("/search", response_model=Union[List[schemas.ProductOut], schemas.MessageResponse])
-def search_products(keyword: str, db: Session = Depends(get_db)) -> Union[List[schemas.ProductOut], Dict[str, str]]:
+@public_router.get("/search", response_model=Union[List[schemas.BasicProductOut], schemas.MessageResponse])
+def search_products(keyword: str, db: Session = Depends(get_db)) -> Union[List[schemas.BasicProductOut], Dict[str, str]]:
     """
     Public: Search products by name or description.
     """
@@ -124,8 +124,8 @@ def search_products(keyword: str, db: Session = Depends(get_db)) -> Union[List[s
     return products
 
 
-@public_router.get("/{id}", response_model=schemas.PublicProductOut)
-def public_product_detail(id: int, db: Session = Depends(get_db)) -> schemas.PublicProductOut:
+@public_router.get("/{id}", response_model=schemas.BasicProductOut)
+def public_product_detail(id: int, db: Session = Depends(get_db)) -> schemas.BasicProductOut:
     """
     Public: Get product details by ID.
     """

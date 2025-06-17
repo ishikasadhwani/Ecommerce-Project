@@ -120,5 +120,6 @@ def search_products(db: Session, keyword: str) -> List[models.Product]:
     """
     return db.query(models.Product).filter(
         models.Product.name.ilike(f"%{keyword}%") |
-        models.Product.description.ilike(f"%{keyword}%")
+        models.Product.description.ilike(f"%{keyword}%")|
+        models.Product.category.ilike(f"%{keyword}%")
     ).all()

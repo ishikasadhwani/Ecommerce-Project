@@ -309,3 +309,35 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 18:28:06,808 - INFO - Product created successfully: id=18, name=Samsung Galaxy A50s
 2025-06-17 18:29:04,574 - INFO - Creating product 'Iphone 13' by admin_id=1
 2025-06-17 18:29:04,578 - INFO - Product created successfully: id=19, name=Iphone 13
+2025-06-17 18:56:25,170 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-17 18:56:25,603 - INFO - Login successful
+2025-06-17 18:56:48,606 - INFO - Creating product 'Iphone 12' by admin_id=1
+2025-06-17 18:56:48,619 - INFO - Product created successfully: id=20, name=Iphone 12
+2025-06-17 18:59:01,720 - INFO - Creating product 'Mixer' by admin_id=1
+2025-06-17 18:59:01,731 - INFO - Product created successfully: id=21, name=Mixer
+2025-06-17 18:59:48,905 - INFO - Login attempt for email: nancy@gmail.com
+2025-06-17 18:59:49,289 - INFO - Login successful
+2025-06-17 19:00:21,967 - INFO - User 5 adding product 10 (qty=1) to cart.
+2025-06-17 19:00:38,442 - INFO - User 5 adding product 18 (qty=1) to cart.
+2025-06-17 19:12:27,580 - INFO - User 5 adding product 18 (qty=1) to cart.
+2025-06-17 19:12:41,096 - INFO - User 5 adding product 10 (qty=1) to cart.
+2025-06-17 19:14:50,103 - INFO - User 5 adding product 10 (qty=1) to cart.
+2025-06-17 19:15:22,944 - INFO - User 5 adding product 10 (qty=1) to cart.
+2025-06-17 19:18:27,629 - INFO - User 5 adding product 10 (qty=1) to cart.
+2025-06-17 19:18:27,642 - WARNING - Add to cart blocked: Product already in cart (product_id=10) for user_id=5
+2025-06-17 19:19:29,021 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
+2025-06-17 19:19:29,422 - INFO - Login successful
+2025-06-17 19:27:25,569 - INFO - Creating product 'Realme 13' by admin_id=1
+2025-06-17 19:27:25,581 - INFO - Product created successfully: id=22, name=Realme 13
+2025-06-17 19:32:45,484 - INFO - Creating product 'Vivo T4x' by admin_id=1
+2025-06-17 19:32:45,498 - INFO - Product created successfully: id=23, name=Vivo T4x
+2025-06-17 19:36:57,205 - INFO - Public product list requested
+2025-06-17 19:39:00,118 - INFO - Public product list requested
+2025-06-17 19:39:18,089 - INFO - Public product list requested
+2025-06-17 19:44:30,161 - INFO - Public product list requested
+2025-06-17 19:45:17,157 - INFO - Public product list requested
+2025-06-17 19:47:57,450 - INFO - Public product list requested
+2025-06-17 19:48:41,202 - INFO - Public search for keyword='mobile'
+2025-06-17 19:49:18,245 - INFO - Public search for keyword='mixer'
+2025-06-17 19:50:20,381 - INFO - Public search for keyword='mobile'
+2025-06-17 21:11:29,014 - INFO - Public search for keyword='mobile'

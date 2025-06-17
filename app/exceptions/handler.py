@@ -76,12 +76,12 @@ async def custom_validation_exception_handler(request: Request, exc: RequestVali
                 },
             )
         
-        elif "stock" in loc:
+        elif "stock" in loc and "greater than" in msg:
             return JSONResponse(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content={
                     "error": True,
-                    "message": "Stock must be greater than 0",
+                    "message": "Stock must be greater than or equal to 0.",
                     "code": status.HTTP_400_BAD_REQUEST,
                 },
             )
