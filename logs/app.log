@@ -305,3 +305,7 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-06-17 18:18:17,484 - INFO - Login attempt for email: ishikasadhwani3@gmail.com
 2025-06-17 18:18:17,881 - INFO - Login successful
 2025-06-17 18:19:00,906 - INFO - Product list requested by admin_id=1
+2025-06-17 18:28:06,793 - INFO - Creating product 'Samsung Galaxy A50s' by admin_id=1
+2025-06-17 18:28:06,808 - INFO - Product created successfully: id=18, name=Samsung Galaxy A50s
+2025-06-17 18:29:04,574 - INFO - Creating product 'Iphone 13' by admin_id=1
+2025-06-17 18:29:04,578 - INFO - Product created successfully: id=19, name=Iphone 13

@@ -1,11 +1,12 @@
-from pydantic import BaseModel, HttpUrl, condecimal, conint
+from pydantic import BaseModel, HttpUrl, condecimal, conint, Field
 from typing import Optional
+from decimal import Decimal
 
 class ProductCreate(BaseModel):
     name: str
-    description: Optional[str]
-    price: condecimal(gt=0)
-    stock: conint(ge=0)
+    price: Decimal = Field(..., gt=0)  # type: Decimal
+    # price: condecimal(gt=0)  # type: Decimal
+    stock: int = Field(..., ge=0)  # type: int
     category: str
     image_url: Optional[HttpUrl]
 
