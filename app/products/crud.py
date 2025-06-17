@@ -1,5 +1,6 @@
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 from typing import List, Optional
 from app.products import models, schemas
 from app.core.config import logger
@@ -15,10 +16,19 @@ def create_product(db: Session, data: schemas.ProductCreate, admin_id: int) -> m
     product_data["price"] = float(product_data["price"])
 
     product = models.Product(**product_data, created_by=admin_id)
-    db.add(product)
-    db.commit()
-    db.refresh(product)
-    return product
+    try:
+        db.add(product)
+        db.commit()
+        db.refresh(product)
+        return product
+    
+    except IntegrityError:
+        db.rollback()
+        logger.error(f"Conflict: Product with name '{data.name}' already exists.")
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=f"Product with name '{data.name}' already exists."
+        )
 
 
 def get_product_by_id(db: Session, product_id: int) -> Optional[models.Product]:

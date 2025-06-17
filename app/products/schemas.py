@@ -12,11 +12,12 @@ class ProductCreate(BaseModel):
 class ProductUpdate(ProductCreate):
     pass
 
-class ProductOut(ProductCreate):
+class ProductOut(ProductCreate): 
     id: int
+    created_by: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class ProductUpdateResponse(BaseModel):
     message: str
@@ -31,12 +32,12 @@ class ProductOutOrders(BaseModel):
     image_url: Optional[HttpUrl]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PublicProductOut(ProductOutOrders):
     price: float
     category: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
